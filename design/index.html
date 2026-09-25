@@ -141,7 +141,7 @@ footer small{display:block;margin-top:40px;color:var(--faint);font-size:13px}
 <section id="commercial" class="wrap">
   <div class="sh"><h2>Коммерческая работа</h2><p>Параллельно с учёбой и после — арт-дирекшн и дизайн для реальных проектов.</p></div>
   <div class="com">
-    <div class="it reveal"><h3>Бойцовский клуб «Первый номер»</h3><p>Ребрендинг «Другой бой» → «Первый номер» вместе с руководителем клуба: смыслы, позиционирование, визуал. Дважды собирал сайт клуба с дизайнером — <a href="https://fightclub-no1.ru/" target="_blank" rel="noopener">fightclub-no1.ru</a>. Проект фасада и входной группы — в разделе «Проекты».</p></div>
+    <div class="it reveal"><h3>Бойцовский клуб «Первый номер»</h3><p>Ребрендинг «Другой бой» → «Первый номер» вместе с руководителем клуба: смыслы, позиционирование, визуал. Дважды собирал сайт клуба с дизайнером — <a href="https://fightclub-no1.ru/" target="_blank" rel="noopener">fightclub-no1.ru</a>. Сайт и фасад клуба — в разделе «Проекты».</p></div>
     <div class="it reveal"><h3>Айдентика и носители</h3><p>Фирменный стиль, логотипы, брендбуки, креативы для соцсетей и email, наружная и печатная реклама с подготовкой к печати, мерч (линейка из 4 позиций).</p></div>
     <div class="it reveal"><h3>Сайты и интерфейсы</h3><p>Макеты сайтов под маркетинг и адаптация под устройства, сайт современного художника. Бриф с заказчиком, тестирование прототипов, защита решений.</p></div>
   </div>
@@ -168,26 +168,27 @@ footer small{display:block;margin-top:40px;color:var(--faint);font-size:13px}
 
 <script>
 const P=[
- {k:'moleskine',cls:'wide',t:'Выставочный стенд Moleskine',tag:'Выставочный стенд · бренд-среда',d:'Концепция стенда и тематической открытки для бренда: главный вид, поисковые макеты, эксперименты с бумагой, текстом и светом.',pg:[19,20]},
+ {k:'club',cls:'wide',t:'Бойцовский клуб «Первый номер» — ребрендинг и сайт',tag:'Коммерческий проект · арт-дирекшн · fightclub-no1.ru',d:'Вместе с руководителем клуба провёл ребрендинг «Другой бой» → «Первый номер»: смыслы, позиционирование, визуальный язык. Как арт-директор дважды собирал сайт клуба с дизайнером — от концепции и структуры до финальных экранов.',pg:['fc1','fc2','fc3','fc4','fc5','fc6','fc7'],link:'https://fightclub-no1.ru/'},
  {k:'facade',cls:'mid',t:'Фасад и входная группа бойцовского клуба',tag:'Фасад · вход · территория · реальный заказчик',d:'Интервью с клиентом → идея «меньше дерева, больше железа и камня» → эскизы, пластические эксперименты, макет и графический планшет.',pg:[11,12,13,14,15,16]},
  {k:'install',cls:'tall',t:'Инсталляция к 200-летию Строгановки',tag:'Объёмно-пространственная инсталляция',d:'Эскизный проект: поисковая графика, эксперименты со светом и материалом, итоговое решение.',pg:[17,18,21,22]},
+ {k:'moleskine',cls:'',t:'Выставочный стенд Moleskine',tag:'Выставочный стенд · бренд-среда',d:'Концепция стенда и тематической открытки для бренда: главный вид, поисковые макеты, эксперименты с бумагой, текстом и светом.',pg:[19,20]},
  {k:'museum',cls:'',t:'Музей эмоций и технологий',tag:'Интерьерная среда · «Хлебозавод №9»',d:'Концепция интерьера: сценарный план, зонирование, визуализации и аксонометрия.',pg:[9,10]},
  {k:'dagestan',cls:'',t:'Дагестанское культурное пространство',tag:'Интерьер',d:'Интерьер из предпроектного исследования: орнамент, танец, ремесло — мужское и женское начала в пространстве.',pg:[6,7,8]},
- {k:'velo',cls:'mid',t:'Велополитен на побережье Анапы',tag:'Концептуальный проект среды',d:'Поисковые эскизы, графическая подача и макет транспортно-прогулочной среды.',pg:[3,4,5]},
- {k:'kandinsky',cls:'tall',t:'Пространство мастера «Кандинский»',tag:'Макет для выставки в Манеже',d:'Авторский коллектив: пространственная композиция по мотивам Кандинского.',pg:[33]}
+ {k:'kandinsky',cls:'',t:'Пространство мастера «Кандинский»',tag:'Макет для выставки в Манеже',d:'Авторский коллектив: пространственная композиция по мотивам Кандинского.',pg:[33]},
+ {k:'velo',cls:'wide',t:'Велополитен на побережье Анапы',tag:'Концептуальный проект среды',d:'Поисковые эскизы, графическая подача и макет транспортно-прогулочной среды.',pg:[3,4,5]}
 ];
 const S=[[25,'Скетчинг'],[26,'Скетчинг'],[27,'Пропедевтика'],[24,'Средовая композиция'],[28,'Формообразование'],[29,'Формообразование'],[23,'Бионика'],[30,'Материаловедение'],[31,'Фактуры'],[32,'Макетирование'],[34,'Колористика'],[35,'Графика'],[36,'Рисунок'],[37,'Рисунок'],[38,'Живопись'],[39,'Типографика']];
-const pad=n=>String(n).padStart(2,'0');
+const pad=n=>String(n).padStart(2,'0');const src=n=>typeof n==='string'?`img/${n}.webp`:`img/p${pad(n)}.webp`;
 const g=document.getElementById('grid');
 P.forEach((p,i)=>{
   const a=document.createElement('article');a.className='card reveal '+p.cls;a.tabIndex=0;
-  a.innerHTML=`<div class="cover"><img src="img/c_${p.k}.webp" alt="${p.t}" loading="lazy"></div><div class="meta"><span class="num">${pad(i+1)}</span><h3>${p.t}</h3><span class="tag">${p.tag}</span><p>${p.d}</p><span class="more">Смотреть подачу · ${p.pg.length} ${p.pg.length===1?'лист':p.pg.length<5?'листа':'листов'}</span></div>`;
+  a.innerHTML=`<div class="cover"><img src="img/c_${p.k}.webp" alt="${p.t}" loading="lazy"></div><div class="meta"><span class="num">${pad(i+1)}</span><h3>${p.t}</h3><span class="tag">${p.tag}</span><p>${p.d}</p><span class="more">Смотреть подачу · ${p.pg.length} ${typeof p.pg[0]==='string'?'экранов':p.pg.length===1?'лист':p.pg.length<5?'листа':'листов'}</span></div>`;
   const open=()=>openP(p);a.onclick=open;a.onkeydown=e=>{if(e.key==='Enter')open()};g.appendChild(a);
 });
 const sg=document.getElementById('studies-grid');
 S.forEach(([n,l])=>{const d=document.createElement('div');d.className='st reveal';d.innerHTML=`<img src="img/t${pad(n)}.webp" alt="${l}" ><span>${l}</span>`;d.onclick=()=>{lbimg.src=`img/p${pad(n)}.webp`;lb.classList.add('open')};sg.appendChild(d)});
 const V=document.getElementById('viewer'),vp=document.getElementById('vpages'),vt=document.getElementById('vt'),lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
-function openP(p){vt.textContent=p.t;vp.innerHTML=`<p>${p.d}</p>`+p.pg.map(n=>`<img src="img/p${pad(n)}.webp" alt="${p.t}, лист ${n}" loading="lazy">`).join('');V.classList.add('open');V.scrollTop=0;document.body.style.overflow='hidden';history.replaceState(null,'','#'+p.k)}
+function openP(p){vt.textContent=p.t;vp.innerHTML=`<p>${p.d}</p>`+(p.link?`<p><a href="${p.link}" target="_blank" rel="noopener" style="color:#ffb08a">Открыть сайт ↗</a></p>`:'')+p.pg.map(n=>`<img src="${src(n)}" alt="${p.t}" loading="lazy">`).join('');V.classList.add('open');V.scrollTop=0;document.body.style.overflow='hidden';history.replaceState(null,'','#'+p.k)}
 function closeP(){V.classList.remove('open');document.body.style.overflow='';history.replaceState(null,'',location.pathname)}
 document.getElementById('vclose').onclick=closeP;
 lb.onclick=()=>lb.classList.remove('open');
