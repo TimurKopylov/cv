@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тестовое · Продюсер запусков · Тимур Копылов</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Тестовое задание на продюсера запусков: продукт без лица эксперта и продажи школы через аудиторию магазина.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f8f4ef; --paper:#fffdfa; --ink:#1f1a20; --muted:#6b6270; --line:#e6ddd4;
+  --accent:#c93a62; --accent-soft:#f7e1e7; --plum:#3a2340; --ok:#2f7d5b; --ok-soft:#e0f0e8; --warn:#b4541a; --warn-soft:#fbe9dc;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 "Golos Text",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Unbounded,sans-serif;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(30px,5.2vw,56px)}
+h2{font-size:clamp(24px,3.4vw,36px);margin-bottom:18px}
+h3{font-size:clamp(18px,2.2vw,22px);font-weight:500;margin:34px 0 12px}
+p{margin:0 0 14px;max-width:720px}
+b,strong{font-weight:600}
+a{color:var(--accent)}
+.kicker{font:600 13px/1 "Golos Text";letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(248,244,239,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:22px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:15px}
+nav a:hover{color:var(--accent)}
+nav .me{margin-left:auto;color:var(--muted);font-weight:400}
+
+/* hero */
+.hero{padding:72px 0 56px;position:relative;overflow:hidden}
+.hero h1{margin:18px 0 22px;max-width:900px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:20px;max-width:680px;color:#3d3540}
+.author{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:15px}
+.author .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.stat .n{font:700 clamp(26px,3.6vw,38px)/1.1 Unbounded;color:var(--plum)}
+.stat .t{font-size:15px;color:var(--muted);margin-top:8px}
+
+section{padding:64px 0;border-top:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+.note{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:18px 20px;font-size:16px}
+.note p:last-child{margin:0}
+
+/* product card */
+.product{background:var(--plum);color:#fff;border-radius:24px;padding:34px;margin:8px 0 10px;position:relative;overflow:hidden}
+.product .kicker{color:#f3a9bf}
+.product h3{font:700 clamp(22px,3vw,32px)/1.15 Unbounded;margin:12px 0 10px}
+.product p{color:#e9dcea;max-width:640px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:6px 14px;font-size:14px}
+.tag b{color:#fff}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.card h4{font-weight:600;font-size:17px;margin-bottom:6px}
+.card p{font-size:15.5px;margin:0;color:#3d3540}
+
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:10px;margin:6px 0}
+ol.steps li{counter-increment:s;position:relative;padding:14px 16px 14px 56px;background:var(--paper);border:1px solid var(--line);border-radius:14px}
+ol.steps li:before{content:counter(s);position:absolute;left:16px;top:13px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font:700 14px/26px Unbounded;text-align:center}
+
+/* timeline */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.tl{padding:20px 18px;border-right:1px solid var(--line)}
+.tl:last-child{border-right:0}
+.tl .w{font:700 13px Unbounded;color:var(--accent);letter-spacing:.04em}
+.tl h4{font-size:16px;font-weight:600;margin:8px 0 6px}
+.tl p{font-size:14.5px;color:#4a4250;margin:0}
+
+/* tables */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:15.5px}
+.tbl th,.tbl td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.tbl th{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;background:#fbf7f2}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl tr.total td{font-weight:700;background:#fbf7f2}
+.tbl.wide{min-width:600px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* calculator */
+.calc{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px;margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.calc h4{font:500 18px Unbounded;margin-bottom:4px}
+.ctl{margin-top:18px}
+.ctl label{display:flex;justify-content:space-between;font-size:15px;margin-bottom:8px;gap:10px}
+.ctl label span:last-child{font-weight:700;font-variant-numeric:tabular-nums;color:var(--plum)}
+input[type=range]{width:100%;accent-color:var(--accent);height:24px}
+.out{background:var(--bg);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:14px;align-self:stretch}
+.out .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:15.5px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.out .row:last-child{border:0;padding:0}
+.out .v{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.out .big .v{font:700 clamp(24px,3vw,32px) Unbounded;color:var(--accent)}
+.out .profit .v{color:var(--ok)}
+
+/* stop metrics */
+.stops{display:grid;gap:10px}
+.stop{display:grid;grid-template-columns:170px 1fr;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;align-items:start}
+.stop .th{background:var(--warn-soft);color:var(--warn);font-weight:700;border-radius:10px;padding:8px 10px;font-size:14.5px;text-align:center}
+.stop p{margin:0;font-size:15.5px}
+
+/* ways */
+.ways{display:grid;gap:18px;margin-top:10px}
+.way{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:26px}
+.way.pick{border:2px solid var(--accent);box-shadow:0 10px 30px -18px rgba(201,58,98,.5)}
+.way .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.way h3{margin:6px 0 4px}
+.badge{display:inline-block;border-radius:99px;padding:6px 12px;font-size:13px;font-weight:600;background:var(--accent);color:#fff}
+.money{font:700 22px Unbounded;color:var(--plum);white-space:nowrap}
+.path{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}
+.path span{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:14.5px}
+.path i{font-style:normal;color:var(--accent);font-weight:700}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:6px 16px;font-size:15.5px}
+.kv dt{color:var(--muted)}
+.shop{margin-top:14px;background:var(--ok-soft);color:#1f5a41;border-radius:12px;padding:12px 14px;font-size:15px}
+.shop.risk{background:var(--warn-soft);color:#7a3a12}
+
+.bars{display:grid;gap:12px;margin-top:10px}
+.bar{display:grid;grid-template-columns:190px 1fr 110px;gap:14px;align-items:center;font-size:15px}
+.bar .track{height:14px;background:#efe7df;border-radius:99px;overflow:hidden}
+.bar .fill{height:100%;background:var(--plum);border-radius:99px}
+.bar.pick .fill{background:var(--accent)}
+.bar .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+
+.qs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+footer{padding:48px 0 70px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;border-radius:99px;padding:13px 22px;font-weight:600}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+
+@media (max-width:820px){
+  .stats,.why,.qs{grid-template-columns:1fr}
+  .two,.calc{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr 1fr}
+  .tl:nth-child(2){border-right:0}
+  .tl:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .stop{grid-template-columns:1fr}
+  .bar{grid-template-columns:1fr 90px}
+  .bar .track{grid-column:1/-1;grid-row:2}
+  .kv{grid-template-columns:1fr}
+  .kv dt{margin-top:6px}
+  nav .me{display:none}
+}
+@media (max-width:480px){
+  body{font-size:16px}
+  .timeline{grid-template-columns:1fr}
+  .tl{border-right:0;border-bottom:1px solid var(--line)}
+  .product,.way,.calc{padding:22px}
+  .hero{padding-top:48px}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#start">С чего начал</a>
+  <a href="#t1">Задание 1</a>
+  <a href="#t2">Задание 2</a>
+  <a href="#q">Вопросы</a>
+  <span class="me">Тимур Копылов</span>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Тестовое · Продюсер запусков · Онлайн Фитнес</div>
+  <h1>Новые деньги из базы — <em>без Катиного времени</em> и без риска для магазина</h1>
+  <p class="lead">Два задания: продукт с другим лицом, который приносит выручку в первый же месяц, и три способа продавать школу покупательницам YouPumpy. Цифры можно покрутить прямо на странице.</p>
+  <div class="author"><span class="dot"></span><span>Тимур Копылов · <a href="https://t.me/timurkopylov">Telegram @timurkopylov</a> · <a href="https://timurkopylov.github.io/cv/">мои кейсы</a></span></div>
+  <div class="stats">
+    <div class="stat"><div class="n">~4,3 млн ₽</div><div class="t">выручка марафона «Мягкая стройность 40+» за первый месяц (базовый сценарий)</div></div>
+    <div class="stat"><div class="n">~710 тыс. ₽</div><div class="t">школе за месяц от покупательниц магазина — способ, который запускаю первым</div></div>
+    <div class="stat"><div class="n">2 недели</div><div class="t">чтобы по пяти цифрам понять: продолжаем или останавливаемся</div></div>
+  </div>
+</div></header>
+
+<section id="start"><div class="wrap two">
+  <div>
+    <div class="kicker">С чего я начал</div>
+    <h2>Половина базы смотрит на продукты не про себя</h2>
+    <p>Прошёлся по витрине, соцсетям и магазину. На витрине 11 программ, и во всех лицо — Катя: дом, зал, беременность, питание. Аудитория — женщины 25–55, медиана 38. При этом женщине за 40 здесь почти нечего выбрать: нет пилатеса, спины, мягких нагрузок.</p>
+    <p>У меня есть свой опыт в фитнесе — марафон двух экспертов. На ~20 тыс. охвата он дал 480 тыс. ₽. Потом я перестроил продуктовую линейку (интенсив-трипвайр → флагман), средний чек вырос в 3 раза, и следующий запуск принёс 1,5 млн ₽. Масштаб у вас другой, но логика та же: продукт под конкретную боль и понятная лесенка цен.</p>
+  </div>
+  <div class="note">
+    <p><b>Честно о цифрах.</b> Ваших конверсий и доставляемости базы я не знаю. Всё ниже — осторожные допущения, я их помечаю. На первой неделе работы заменил бы их данными прошлых запусков. Поэтому в расчётах есть ползунки: подставьте свои цифры и посмотрите, что изменится.</p>
+  </div>
+</div></section>
+
+<section id="t1"><div class="wrap">
+  <div class="kicker">Задание 1</div>
+  <h2>Продукт без Кати, который продаётся в первый же месяц</h2>
+
+  <div class="product">
+    <div class="kicker">Что запускаю</div>
+    <h3>«Мягкая стройность 40+»</h3>
+    <p>21-дневный марафон пилатеса и силовых без нагрузки на суставы и спину. Для тех, кому за 40 и кому «жёсткие» программы уже не подходят.</p>
+    <div class="tags">
+      <span class="tag"><b>3 990 ₽</b> — сама</span>
+      <span class="tag"><b>6 990 ₽</b> — с обратной связью тренера</span>
+      <span class="tag">средний чек <b>~4 590 ₽</b></span>
+    </div>
+  </div>
+
+  <div class="why">
+    <div class="card"><h4>Закрывает дыру на витрине</h4><p>Не спорит с Катиными марафонами за 30-летнюю девушку, а забирает сегмент, который сейчас уходит к другим.</p></div>
+    <div class="card"><h4>Другое лицо здесь естественно</h4><p>Катя — чемпионка по фитнес-бикини, а не инструктор пилатеса. Новому тренеру не нужно с ней конкурировать.</p></div>
+    <div class="card"><h4>Формат база уже знает</h4><p>Марафон не нужно объяснять. Переиспользуем лендинги, платформу и кураторов.</p></div>
+  </div>
+
+  <h3>Кто лицо и где его найти</h3>
+  <div class="two">
+    <div>
+      <p>Инструктор пилатеса или ЛФК <b>40–50 лет в отличной форме</b>. Ровесница аудитории: реакция «она как я, и у неё получилось» работает сильнее кубиков на прессе. Медицинский бэкграунд — плюс, для 40+ это вопрос доверия.</p>
+      <p>Условия: <b>200 тыс. ₽ за съёмки + 10% с выручки</b>. Процент — чтобы тренер сама хотела продавать в своих соцсетях.</p>
+      <p><b>Катя здесь не лицо, а рекомендатель.</b> Один пост «я нашла тренера для тех, кому за 40» переносит её доверие на продукт и не отнимает её время.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Внутри команды Кати.</b> Тренеры и кураторы, которых база уже видела. Быстрее всего.</li>
+      <li><b>Инструкторы студий пилатеса с блогом 10–50 тыс.</b> По роликам сразу видно, как человек держится на камере.</li>
+      <li><b>Кастинг через канал школы:</b> «ищем тренера для нового направления». Заодно прогрев.</li>
+    </ol>
+  </div>
+
+  <h3>План на месяц</h3>
+  <div class="timeline">
+    <div class="tl"><div class="w">НЕДЕЛЯ 1</div><h4>Тренер и съёмка</h4><p>Выбираем лицо, снимаем трейлер, бесплатный урок и первые 7 дней. Собираем лендинг.</p></div>
+    <div class="tl"><div class="w">НЕДЕЛЯ 2</div><h4>Прогрев</h4><p>3 письма: проблема 40+ → история тренера → бесплатный урок. Катя рекомендует тренера.</p></div>
+    <div class="tl"><div class="w">НЕДЕЛЯ 3</div><h4>Продажи</h4><p>Урок → оффер, ранняя цена 72 часа, дожим. Параллельно доснимаем дни 8–21.</p></div>
+    <div class="tl"><div class="w">НЕДЕЛЯ 4</div><h4>Старт</h4><p>Марафон идёт, кураторы на связи, допродаём старший тариф.</p></div>
+  </div>
+  <p class="muted small" style="margin-top:10px">Продаём, не дожидаясь всех съёмок: уроки открываются по дням, достаточно готовой первой недели.</p>
+
+  <h3>Откуда деньги</h3>
+  <div class="scroll"><table class="tbl wide">
+    <tr><th>Канал</th><th>Логика (допущения)</th><th style="text-align:right">Продажи</th></tr>
+    <tr><td>Email, активные ~350 тыс.</td><td>5% регистрируются на бесплатный урок → 3% покупают</td><td class="num">~525</td></tr>
+    <tr><td>Email, неактивные ~650 тыс.</td><td>1 реактивационное + 1 продающее письмо, 0,02% покупок</td><td class="num">~130</td></tr>
+    <tr><td>Соцсети школы + Катя</td><td>посты и сторис в TG, VK</td><td class="num">~150</td></tr>
+    <tr><td>VK Ads, ретаргет на базу</td><td>200 тыс. ₽, ~1 500 ₽ за продажу</td><td class="num">~130</td></tr>
+    <tr class="total"><td>Итого</td><td></td><td class="num">~935</td></tr>
+  </table></div>
+  <p class="small muted" style="margin-top:12px">Почему не шлю весь миллион одинаково: база — главный актив. Рассылка по «мёртвым» адресам бьёт по доставляемости всех будущих Катиных запусков. Основной поток — по активным, неактивных будим отдельно и аккуратно. Сверка с моим марафоном: там было ~24 ₽ выручки на человека охвата, здесь закладываю ~4 ₽ на контакт — для холодной базы и нового лица осторожность оправдана.</p>
+
+  <div class="calc" id="calc1">
+    <div>
+      <h4>Посчитайте на своих цифрах</h4>
+      <p class="small muted">Фикс-расходы ~1,1 млн ₽ + 10% тренеру.</p>
+      <div class="ctl"><label><span>Активная база, тыс.</span><span id="v_a"></span></label><input id="a" type="range" min="100" max="700" step="10" value="350"></div>
+      <div class="ctl"><label><span>Регистрации на бесплатный урок</span><span id="v_r"></span></label><input id="r" type="range" min="1" max="10" step="0.5" value="5"></div>
+      <div class="ctl"><label><span>Покупки из регистраций</span><span id="v_c"></span></label><input id="c" type="range" min="0.5" max="6" step="0.5" value="3"></div>
+      <div class="ctl"><label><span>Продажи из других каналов</span><span id="v_o"></span></label><input id="o" type="range" min="0" max="1000" step="10" value="410"></div>
+      <div class="ctl"><label><span>Средний чек, ₽</span><span id="v_p"></span></label><input id="p" type="range" min="2990" max="6990" step="100" value="4590"></div>
+    </div>
+    <div class="out">
+      <div class="row"><span>Продаж</span><span class="v" id="o_s"></span></div>
+      <div class="row big"><span>Выручка</span><span class="v" id="o_rev"></span></div>
+      <div class="row"><span>Расходы (фикс + 10%)</span><span class="v" id="o_cost"></span></div>
+      <div class="row profit"><span>Остаётся</span><span class="v" id="o_pr"></span></div>
+    </div>
+  </div>
+
+  <h3>Бюджет</h3>
+  <div class="scroll"><table class="tbl">
+    <tr><th>Статья</th><th style="text-align:right">₽</th></tr>
+    <tr><td>Тренер, фикс</td><td class="num">200 000</td></tr>
+    <tr><td>Съёмка 21 урока + монтаж (2 студийных дня)</td><td class="num">350 000</td></tr>
+    <tr><td>Лендинг, креативы</td><td class="num">100 000</td></tr>
+    <tr><td>Рассылки (зависит от вашего тарифа ESP)</td><td class="num">150 000</td></tr>
+    <tr><td>VK Ads</td><td class="num">200 000</td></tr>
+    <tr><td>Кураторы для старшего тарифа</td><td class="num">~100 000</td></tr>
+    <tr class="total"><td>Итого фикс</td><td class="num">~1,1 млн</td></tr>
+    <tr><td>+ 10% тренеру с выручки</td><td class="num">~430 000</td></tr>
+  </table></div>
+  <p class="small muted" style="margin-top:12px">В базовом сценарии чистыми ~2,8 млн ₽ в первый месяц, дальше продукт живёт в витрине постоянно. Если всё сработает вдвое хуже — выручка ~2,1 млн, запуск всё равно окупается.</p>
+
+  <h3>Когда останавливаться: цифры через 2 недели</h3>
+  <div class="stops">
+    <div class="stop"><div class="th">регистрации &lt; 2%</div><p>от активной базы (план 5%). Не цепляет лицо или оффер — меняю подачу <b>до</b> старта продаж, а не после.</p></div>
+    <div class="stop"><div class="th">досмотр &lt; 50%</div><p>бесплатного урока. Тренер не держит внимание на камере.</p></div>
+    <div class="stop"><div class="th">покупки &lt; 1%</div><p>от регистраций за первые 72 часа продаж (план 3%). Продукт не продаётся — режу расходы.</p></div>
+    <div class="stop"><div class="th">отписки &gt; 0,5%</div><p>или жалобы на спам &gt; 0,1% на письмо. Стоп рассылки по этому сегменту: база дороже одного запуска.</p></div>
+    <div class="stop"><div class="th">продажа &gt; 2 300 ₽</div><p>в VK Ads после 50 тыс. открута (половина среднего чека) — выключаю канал.</p></div>
+  </div>
+</div></section>
+
+<section id="t2"><div class="wrap">
+  <div class="kicker">Задание 2</div>
+  <h2>Продавать школу покупательницам YouPumpy и не мешать магазину</h2>
+  <div class="two">
+    <div>
+      <p>Леггинсы в магазине стоят 9–16 тыс. ₽. Значит, покупательница платёжеспособна и уже тренируется или собирается. Это тёплая аудитория: её не нужно убеждать, что спорт — это хорошо.</p>
+      <p class="small muted">Для расчётов взял <b>3 000 заказов в месяц</b> и <b>60 тыс. покупательниц в базе</b> с согласием на рассылку. Реальные цифры меняются ползунком ниже.</p>
+    </div>
+    <div class="note"><p><b>Важная деталь.</b> У школы и магазина, скорее всего, разные юрлица. Передать базу магазина школе без согласия покупательниц нельзя (152-ФЗ). Поэтому все три способа работают на точках контакта самого магазина — базу никто никуда не переносит.</p></div>
+  </div>
+
+  <div class="ways">
+    <div class="way pick">
+      <div class="hd"><div><span class="badge">Запускаю первым</span><h3>1. Предложение сразу после оплаты заказа</h3></div><div class="money">~710 тыс. ₽</div></div>
+      <div class="path"><span>Оплатила леггинсы</span><i>→</i><span>Блок на странице «Спасибо» и в письме</span><i>→</i><span>Бесплатный урок</span><i>→</i><span>«Упругая попа 1.0» за 3 950 ₽ вместо 7 900, 72 часа</span></div>
+      <dl class="kv">
+        <dt>Кого берём</dt><dd>Каждую покупательницу в момент, когда мотивация на пике — она только что купила форму.</dd>
+        <dt>Что говорим</dt><dd>«Леггинсы подчеркнут форму, а программа её сделает».</dd>
+        <dt>Через месяц смотрим</dt><dd>доля заказов с покупкой марафона (цель от 4%), лендинг → оплата (от 15%), начали тренироваться к 3-му дню (от 70%).</dd>
+      </dl>
+      <div class="shop"><b>Магазин:</b> продажи не меняются. Предложение появляется после оплаты, в оформление заказа ничего не добавляем. Скидку даёт школа.</div>
+    </div>
+
+    <div class="way">
+      <div class="hd"><div><h3>2. QR-карточка в посылке: 7 дней в подарок</h3></div><div class="money">~320 тыс. ₽</div></div>
+      <div class="path"><span>Распаковала заказ</span><i>→</i><span>Карточка «7 дней с Катей в подарок»</span><i>→</i><span>Неделя «Метода Усмановой»</span><i>→</i><span>Флагман за 9 900 ₽ на 5–7-й день</span></div>
+      <dl class="kv">
+        <dt>Кого берём</dt><dd>Покупательниц, получивших заказ.</dd>
+        <dt>Через месяц смотрим</dt><dd>активация QR (от 15%), дошли до 5-го дня (от 40%), купили (от 10%).</dd>
+      </dl>
+      <div class="shop"><b>Магазин:</b> нейтрально или плюс. Карточка стоит ~20 ₽, на обороте «−10% на следующий заказ YouPumpy» — повторные покупки растут.</div>
+    </div>
+
+    <div class="way">
+      <div class="hd"><div><h3>3. Челлендж «21 день в YouPumpy»</h3></div><div class="money">~340 тыс. ₽</div></div>
+      <div class="path"><span>2 письма и пост магазина</span><i>→</i><span>Марафон по спеццене 5 900 ₽</span><i>→</i><span>Прогресс в форме YouPumpy с хэштегом</span><i>→</i><span>Лучшим — комплект</span></div>
+      <dl class="kv">
+        <dt>Кого берём</dt><dd>Базу магазина с согласием на рассылки, прежде всего купивших за полгода.</dd>
+        <dt>Через месяц смотрим</dt><dd>клики в письмах (от 4%), покупки с лендинга (от 8%), число постов с хэштегом.</dd>
+      </dl>
+      <div class="shop risk"><b>Магазин:</b> риск — письмо школы займёт слот промо магазина. Поэтому максимум 2 письма и не в недели распродаж. Зато «форма YouPumpy» подталкивает докупить комплект, а посты — бесплатный контент.</div>
+    </div>
+  </div>
+
+  <h3>Сравнение за первый месяц</h3>
+  <div class="bars">
+    <div class="bar pick"><span>1. После оплаты</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">~710 тыс.</span></div>
+    <div class="bar"><span>3. Челлендж</span><div class="track"><div class="fill" style="width:48%"></div></div><span class="v">~340 тыс.</span></div>
+    <div class="bar"><span>2. QR в посылке</span><div class="track"><div class="fill" style="width:45%"></div></div><span class="v">~320 тыс.</span></div>
+  </div>
+  <p class="small muted" style="margin-top:12px">1: 3 000 × 6% × 3 950 ₽. 2: 3 000 × 15% × 12% × 9 900 ₽ × 0,6 (посылки идут 3–7 дней, часть покупок уйдёт на второй месяц). 3: 60 000 × 30% открытий × 4% кликов × 8% × 5 900 ₽.</p>
+
+  <h3>Почему первым — способ 1</h3>
+  <div class="why">
+    <div class="card"><h4>Быстрее всех</h4><p>Один блок на странице «Спасибо», одно письмо, промокод. Ни съёмок, ни печати — запуск за 1–2 недели.</p></div>
+    <div class="card"><h4>Лучший момент</h4><p>Человек только что заплатил 9–16 тыс. за леггинсы «для попы». Программа «для попы» за 3 950 ₽ — продолжение покупки, а не реклама.</p></div>
+    <div class="card"><h4>Всё считается точно</h4><p>Заказ → показ → покупка. Через месяц честная цифра без споров об атрибуции, а магазин ничем не рискует.</p></div>
+  </div>
+
+  <div class="calc" id="calc2">
+    <div>
+      <h4>Способ 1 на ваших цифрах</h4>
+      <p class="small muted">Сверху — допродажа «Упругой попы 2.0» за 7 900 ₽ во втором месяце.</p>
+      <div class="ctl"><label><span>Заказов в месяц</span><span id="v_n"></span></label><input id="n" type="range" min="500" max="10000" step="100" value="3000"></div>
+      <div class="ctl"><label><span>Купили марафон</span><span id="v_t"></span></label><input id="t" type="range" min="1" max="12" step="0.5" value="6"></div>
+      <div class="ctl"><label><span>Цена предложения, ₽</span><span id="v_q"></span></label><input id="q" type="range" min="1990" max="7900" step="10" value="3950"></div>
+    </div>
+    <div class="out">
+      <div class="row"><span>Покупок марафона</span><span class="v" id="o2_s"></span></div>
+      <div class="row big"><span>Школе за месяц</span><span class="v" id="o2_rev"></span></div>
+      <div class="row"><span>Магазину</span><span class="v" style="color:var(--ok)">без потерь</span></div>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:12px">Способы 2 и 3 запускаю следом: QR требует печати и логистики, челлендж — контента и сверки с промо-календарём магазина.</p>
+</div></section>
+
+<section id="q"><div class="wrap">
+  <div class="kicker">Дальше</div>
+  <h2>Что я бы спросил на первой встрече</h2>
+  <div class="qs">
+    <div class="card"><h4>Какие реальные конверсии</h4><p>Сколько базы открывает письма и как конвертировались прошлые запуски — чтобы заменить мои допущения фактами.</p></div>
+    <div class="card"><h4>Кого база уже знает</h4><p>Есть ли в команде тренеры, которых ученицы видели и любят.</p></div>
+    <div class="card"><h4>Цифры магазина</h4><p>Сколько заказов в месяц у YouPumpy и одно ли юрлицо у магазина и школы.</p></div>
+    <div class="card"><h4>Что не получилось</h4><p>Какие запуски провалились и почему. Из этого обычно понятно больше, чем из успешных.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b>Тимур Копылов</b><br><span class="muted">Продюсер запусков · участвовал в запусках онлайн-школы на 40+ млн ₽, свои запуски — 3+ млн ₽</span></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="https://t.me/timurkopylov">Написать в Telegram</a><a class="btn alt" href="https://timurkopylov.github.io/cv/">Кейсы с цифрами</a></div>
+</div></footer>
+
+<script>
+const fmt=n=>Math.round(n).toLocaleString('ru-RU');
+const mln=n=>n>=1e6?(n/1e6).toFixed(1).replace('.',',')+' млн ₽':fmt(n/1000)+' тыс. ₽';
+const $=id=>document.getElementById(id);
+function c1(){
+  const a=+$('a').value*1000,r=+$('r').value/100,c=+$('c').value/100,o=+$('o').value,p=+$('p').value;
+  $('v_a').textContent=fmt(a/1000);$('v_r').textContent=String($('r').value).replace('.',',')+'%';$('v_c').textContent=String($('c').value).replace('.',',')+'%';$('v_o').textContent=fmt(o);$('v_p').textContent=fmt(p)+' ₽';
+  const s=a*r*c+o,rev=s*p,cost=1100000+rev*.1;
+  $('o_s').textContent='~'+fmt(s);$('o_rev').textContent='~'+mln(rev);$('o_cost').textContent='~'+mln(cost);
+  const pr=rev-cost;$('o_pr').textContent=(pr<0?'−':'~')+mln(Math.abs(pr));$('o_pr').style.color=pr<0?'var(--warn)':'';
+}
+function c2(){
+  const n=+$('n').value,t=+$('t').value/100,q=+$('q').value;
+  $('v_n').textContent=fmt(n);$('v_t').textContent=String($('t').value).replace('.',',')+'%';$('v_q').textContent=fmt(q)+' ₽';
+  const s=n*t;$('o2_s').textContent='~'+fmt(s);$('o2_rev').textContent='~'+mln(s*q);
+}
+['a','r','c','o','p'].forEach(i=>$(i).addEventListener('input',c1));
+['n','t','q'].forEach(i=>$(i).addEventListener('input',c2));
+c1();c2();
+</script>
+</body>
+</html>
