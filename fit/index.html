@@ -430,5 +430,100 @@ document.querySelectorAll('section h2, section h3, .card, .stat, .way, .stop, .t
 const prog=document.getElementById('prog');addEventListener('scroll',()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.stat .n').forEach(n=>{const txt=n.textContent;const m=txt.match(/([\d,]+)/);if(!m)return;const target=parseFloat(m[1].replace(',','.'));const dec=m[1].includes(',')?1:0;const t0=performance.now();n.textContent=txt.replace(m[1],'0');function f(t){const p=Math.min((t-t0)/1300,1),e=1-Math.pow(1-p,3);n.textContent=txt.replace(m[1],(target*e).toFixed(dec).replace('.',','));if(p<1)requestAnimationFrame(f)}setTimeout(()=>requestAnimationFrame(f),300)})}
 </script>
+<style>
+/* ==== FX2 (fit, light) ==== */
+nav a.fx-on{color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+nav a[href^="#"]{padding:17px 0;transition:color .2s,box-shadow .2s}
+.fx-pdf{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font:600 13px/1 "Golos Text",sans-serif;color:var(--ink);background:var(--paper);border:1px solid var(--line);padding:9px 13px;border-radius:99px;cursor:pointer}
+.fx-pdf:hover{border-color:var(--accent);color:var(--accent)}
+/* marker highlight */
+.fx-mk{background:linear-gradient(transparent 58%,rgba(201,58,98,.18) 58%,rgba(201,58,98,.18) 92%,transparent 92%) no-repeat 0 0/0% 100%;transition:background-size 1s cubic-bezier(.3,.7,.2,1)}
+.fx-mk.in{background-size:100% 100%}
+/* heading anchors */
+section h2{position:relative}
+.fx-anc{position:absolute;left:-1.1em;top:0;opacity:0;color:var(--accent);text-decoration:none;font-weight:500;transition:opacity .2s;border:0;background:none;cursor:pointer;font:inherit}
+section h2:hover .fx-anc,.fx-anc:focus{opacity:.8}
+@media (max-width:1120px){.fx-anc{position:static;margin-left:.3em;opacity:.35;font-size:.7em;vertical-align:middle}}
+/* side toc */
+.fx-toc{position:fixed;left:max(18px,calc((100vw - 1040px)/2 - 210px));top:50%;transform:translateY(-50%);width:170px;z-index:5;display:flex;flex-direction:column;gap:12px;font:500 13px/1.3 "Golos Text",sans-serif}
+.fx-toc a{color:var(--muted);text-decoration:none;display:block}
+.fx-toc a b{display:block;height:3px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden;position:relative}
+.fx-toc a b::after{content:"";position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(var(--p,0))}
+.fx-toc a.on{color:var(--ink)}
+@media (max-width:1480px){.fx-toc{display:none}}
+/* calc output flash */
+.out .v{transition:color .3s}
+.out .v.fx-fl{animation:fxfl .6s ease}
+@keyframes fxfl{0%{background:var(--accent-soft);border-radius:6px;box-shadow:0 0 0 5px var(--accent-soft)}100%{background:transparent;box-shadow:0 0 0 5px transparent}}
+/* reading time chip */
+.fx-rt{display:inline-flex;align-items:center;gap:7px;margin-left:10px;font-size:13px;color:var(--muted);background:var(--paper);border:1px solid var(--line);padding:5px 10px;border-radius:99px;white-space:nowrap}
+/* hero blob */
+.fx-blob{position:absolute;width:520px;height:520px;left:0;top:0;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(closest-side,rgba(201,58,98,.16),rgba(58,35,64,.08) 60%,transparent);filter:blur(10px);transform:translate(-50%,-50%);transition:opacity .6s;opacity:0}
+.hero.fx-bh{isolation:isolate}
+.hero.fx-bh .fx-blob{opacity:1}
+/* back to top */
+.fx-top{position:fixed;right:18px;bottom:18px;z-index:20;width:50px;height:50px;border-radius:50%;background:var(--paper);border:1px solid var(--line);cursor:pointer;display:grid;place-items:center;opacity:0;transform:translateY(12px);transition:.3s;box-shadow:0 10px 30px -14px rgba(31,26,32,.35)}
+.fx-top.on{opacity:1;transform:none}
+.fx-top svg{position:absolute;inset:-1px;width:50px;height:50px;transform:rotate(-90deg)}
+.fx-top circle{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-dasharray:150.8;stroke-dashoffset:var(--o,150.8)}
+.fx-top span{font:700 16px/1 system-ui;color:var(--ink)}
+.fx-toast{position:fixed;left:50%;bottom:22px;z-index:30;transform:translate(-50%,160%);background:var(--ink);color:#fff;font:500 14px/1.3 "Golos Text",sans-serif;padding:11px 16px;border-radius:12px;transition:transform .4s cubic-bezier(.2,.9,.2,1.15)}
+.fx-toast.on{transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.fx-mk{transition:none;background-size:100% 100%}.out .v.fx-fl{animation:none}}
+@media print{
+  nav,.fx-toc,.fx-top,.fx-toast,.fx-blob,.fx-pdf,#prog,.fx-anc,.fx-rt{display:none!important}
+  body{background:#fff;font-size:12pt}
+  .reveal,.reveal.in{opacity:1!important;transform:none!important}
+  .card,.calc,.way,.stop,.product,.tl,.stat{break-inside:avoid;box-shadow:none!important}
+  section{padding-top:18pt!important;padding-bottom:10pt!important}
+  input[type=range]{display:none}
+  a{color:inherit}
+  .fx-mk{background-size:100% 100%}
+}
+</style>
+<div class="fx-toast" id="fxToast" role="status" aria-live="polite"></div>
+<script>
+(()=>{
+const d=document,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const toast=(()=>{const t=d.getElementById('fxToast');let to;return h=>{t.textContent=h;t.classList.add('on');clearTimeout(to);to=setTimeout(()=>t.classList.remove('on'),2200)}})();
+const secs=[['start','С чего начал'],['t1','Задание 1'],['t2','Задание 2'],['q','Вопросы']].map(([id,l])=>[d.getElementById(id),l]).filter(s=>s[0]);
+
+/* PDF button */
+const nv=d.querySelector('nav .wrap');if(nv){const b=d.createElement('button');b.className='fx-pdf';b.type='button';b.innerHTML='PDF ↓';b.title='Сохранить страницу в PDF';b.onclick=()=>{d.querySelectorAll('.fx-mk').forEach(m=>m.classList.add('in'));window.print()};nv.appendChild(b)}
+
+/* nav scrollspy + side toc */
+const navA=[...d.querySelectorAll('nav a[href^="#"]')];
+const toc=d.createElement('div');toc.className='fx-toc';toc.setAttribute('aria-hidden','true');
+secs.forEach(([s,l])=>{const a=d.createElement('a');a.href='#'+s.id;a.tabIndex=-1;a.innerHTML=l+'<b></b>';toc.appendChild(a)});d.body.appendChild(toc);
+const tA=[...toc.children];
+const top=d.createElement('button');top.className='fx-top';top.type='button';top.setAttribute('aria-label','Наверх');top.innerHTML='<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="24"/></svg><span>↑</span>';top.onclick=()=>scrollTo({top:0,behavior:RM?'auto':'smooth'});d.body.appendChild(top);
+const spy=()=>{let cur=-1;secs.forEach(([s],i)=>{const r=s.getBoundingClientRect();if(r.top<innerHeight*.4)cur=i;const p=Math.min(1,Math.max(0,(innerHeight*.4-r.top)/r.height));tA[i].style.setProperty('--p',p.toFixed(3))});
+ tA.forEach((a,i)=>a.classList.toggle('on',i===cur));navA.forEach(a=>a.classList.toggle('fx-on',cur>=0&&a.getAttribute('href')==='#'+secs[cur][0].id));
+ const h=d.documentElement,pr=h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight);top.classList.toggle('on',h.scrollTop>innerHeight);top.style.setProperty('--o',(150.8*(1-pr)).toFixed(1))};
+addEventListener('scroll',spy,{passive:true});spy();
+
+/* marker highlight on key phrases */
+const mk=[...d.querySelectorAll('section p b, section li b')].filter(b=>b.textContent.length>6&&!b.closest('.tag,.out,.calc,table'));
+mk.forEach(b=>b.classList.add('fx-mk'));
+if(RM)mk.forEach(b=>b.classList.add('in'));else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),150);io.unobserve(e.target)}}),{threshold:1,rootMargin:'0px 0px -15% 0px'});mk.forEach(b=>io.observe(b))}
+
+/* heading anchors */
+d.querySelectorAll('section h2').forEach(h=>{const s=h.closest('section');if(!s||!s.id)return;const a=d.createElement('button');a.type='button';a.className='fx-anc';a.textContent='#';a.setAttribute('aria-label','Скопировать ссылку на раздел');
+ a.onclick=()=>{const u=location.href.split('#')[0]+'#'+s.id;history.replaceState(null,'','#'+s.id);(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast('Ссылка на раздел скопирована'),()=>toast(u))};h.appendChild(a)});
+
+/* calculator output flash */
+d.querySelectorAll('.out .v').forEach(v=>{new MutationObserver(()=>{v.classList.remove('fx-fl');void v.offsetWidth;v.classList.add('fx-fl')}).observe(v,{childList:true,characterData:true,subtree:true})});
+
+/* reading time */
+const au=d.querySelector('.hero .author');if(au){const w=(d.body.innerText||'').split(/\s+/).length,m=Math.max(1,Math.round(w/190));const c=d.createElement('span');c.className='fx-rt';c.textContent=`⏱ ${m} мин чтения`;au.appendChild(c)}
+
+/* hero blob follows cursor */
+const hero=d.querySelector('.hero');if(hero&&!RM&&matchMedia('(hover:hover)').matches){const b=d.createElement('div');b.className='fx-blob';hero.appendChild(b);hero.classList.add('fx-bh');let x=innerWidth*.7,y=200,tx=x,ty=y;
+ hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top});(function f(){x+=(tx-x)*.07;y+=(ty-y)*.07;b.style.left=x+'px';b.style.top=y+'px';requestAnimationFrame(f)})()}
+
+/* title swap */
+const T0=d.title;d.addEventListener('visibilitychange',()=>{d.title=d.hidden?'Тестовое ждёт · Тимур Копылов':T0});
+})();
+</script>
 </body>
 </html>
