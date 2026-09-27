@@ -6,8 +6,8 @@
 <meta name="description" content="Тимур Копылов — маркетолог в EdTech и запусках образовательных продуктов.">
 <style>
 .fx-avail{display:inline-flex;align-items:center;gap:9px;margin-top:18px;font:500 14px/1.2 var(--body);color:var(--soft);border:1px solid var(--line);background:rgba(28,21,31,.5);padding:9px 14px;border-radius:99px}
-.fx-avail i{width:8px;height:8px;border-radius:50%;background:#7dff3a;box-shadow:0 0 0 0 rgba(125,255,58,.6);animation:fxpulse 2s infinite}
-@keyframes fxpulse{70%{box-shadow:0 0 0 10px rgba(125,255,58,0)}100%{box-shadow:0 0 0 0 rgba(125,255,58,0)}}
+.fx-avail i{width:8px;height:8px;border-radius:50%;background:#ffb08a;box-shadow:0 0 0 0 rgba(255,176,138,.6);animation:fxpulse 2s infinite}
+@keyframes fxpulse{70%{box-shadow:0 0 0 10px rgba(255,176,138,0)}100%{box-shadow:0 0 0 0 rgba(255,176,138,0)}}
 @media (prefers-reduced-motion:reduce){.fx-avail i{animation:none}}
 </style>
 </head>
@@ -19,7 +19,7 @@ html.fx-pre body{overflow:hidden}
 #fxPre .pv{position:absolute;left:0;right:0;height:50.5%;background:#141016;transition:transform .8s cubic-bezier(.77,0,.18,1)}
 #fxPre .pv.t{top:0;border-bottom:1px solid rgba(255,106,43,.0)}
 #fxPre .pv.b{bottom:0}
-#fxPre .pv.t::after,#fxPre .pv.b::before{content:"";position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,#ff6a2b,#c04d78,#7dff3a,#ff2e88);opacity:0;transition:opacity .2s}
+#fxPre .pv.t::after,#fxPre .pv.b::before{content:"";position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,#ff6a2b,#c04d78,#ffb08a,#ff4d7d);opacity:0;transition:opacity .2s}
 #fxPre .pv.t::after{bottom:0}#fxPre .pv.b::before{top:0}
 #fxPre.go .pv.t::after,#fxPre.go .pv.b::before{opacity:1}
 #fxPre.go .pv.t{transform:translateY(-101%)}#fxPre.go .pv.b{transform:translateY(101%)}
@@ -27,8 +27,8 @@ html.fx-pre body{overflow:hidden}
 #fxPre.go .pc{opacity:0}
 #fxPre .pn{font-size:clamp(72px,18vw,260px);font-weight:700;line-height:.85;letter-spacing:-.04em;position:relative}
 #fxPre .pn::before,#fxPre .pn::after{content:attr(data-v);position:absolute;inset:0;mix-blend-mode:screen}
-#fxPre .pn::before{color:#ff2e88;transform:translate(-4px,0);clip-path:inset(20% 0 55% 0);animation:fxpj .3s steps(2) infinite}
-#fxPre .pn::after{color:#7dff3a;transform:translate(4px,0);clip-path:inset(60% 0 12% 0);animation:fxpj .23s steps(2) infinite reverse}
+#fxPre .pn::before{color:#ff4d7d;transform:translate(-4px,0);clip-path:inset(20% 0 55% 0);animation:fxpj .3s steps(2) infinite}
+#fxPre .pn::after{color:#ffb08a;transform:translate(4px,0);clip-path:inset(60% 0 12% 0);animation:fxpj .23s steps(2) infinite reverse}
 @keyframes fxpj{50%{clip-path:inset(40% 0 30% 0);transform:translate(3px,0)}}
 #fxPre .ps{display:flex;justify-content:space-between;gap:16px;font:500 12px/1.4 'Golos Text',system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#978a96;margin-bottom:14px}
 #fxPre .pl{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,#ff6a2b,#c04d78);transform-origin:left;transform:scaleX(0)}
@@ -768,7 +768,7 @@ if(FINE){document.querySelectorAll('.case,.stat,.job').forEach(el=>{const sp=doc
 /* ghost words */
 .fx-gh-host{position:relative;isolation:isolate}
 .fx-ghost{position:absolute;left:-.04em;top:-.42em;z-index:-1;pointer-events:none;user-select:none;white-space:nowrap;font:800 clamp(90px,17vw,260px)/1 'Unbounded','Golos Text',sans-serif;letter-spacing:-.05em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(243,237,232,.075);will-change:transform}
-html.vhs .fx-ghost{-webkit-text-stroke:1px rgba(125,255,58,.14)}
+html.vhs .fx-ghost{-webkit-text-stroke:1px rgba(255,176,138,.14)}
 /* telegram letters */
 .fx-lt{display:inline-block;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
 .fx-wave{white-space:nowrap}
@@ -776,7 +776,7 @@ html.vhs .fx-ghost{-webkit-text-stroke:1px rgba(125,255,58,.14)}
 /* toast */
 .fx-toast{position:fixed;left:50%;top:18px;z-index:195;transform:translate(-50%,-160%);background:#1c1520;color:#f3ede8;border:1px solid rgba(243,237,232,.16);font:500 14px/1.3 'Golos Text',system-ui,sans-serif;padding:11px 16px;border-radius:12px;box-shadow:0 20px 40px -18px #000;transition:transform .45s cubic-bezier(.2,.9,.2,1.15);max-width:calc(100vw - 32px)}
 .fx-toast.on{transform:translate(-50%,0)}
-.fx-toast b{color:#7dff3a;font-weight:600}
+.fx-toast b{color:#ffb08a;font-weight:600}
 /* copyable */
 .fx-copy{cursor:copy;border-bottom:1px dashed rgba(243,237,232,.3);transition:color .2s}
 .fx-copy:hover{color:#ffb08a}
@@ -790,7 +790,7 @@ html.vhs .fx-vhs-btn i{background:#ff2e2e;box-shadow:0 0 10px #ff2e2e;animation:
 .fx-vhs-inline{position:static;display:inline-flex;margin-top:14px;backdrop-filter:none}
 @media (min-width:761px){.fx-vhs-inline{display:none}}
 /* VHS mode */
-.fx-osd{position:fixed;inset:0;z-index:185;pointer-events:none;display:none;font:400 clamp(16px,1.8vw,24px)/1 'VT323','Courier New',monospace;color:#f3ede8;text-shadow:2px 0 #ff2e88,-2px 0 #00e5ff}
+.fx-osd{position:fixed;inset:0;z-index:185;pointer-events:none;display:none;font:400 clamp(16px,1.8vw,24px)/1 'VT323','Courier New',monospace;color:#f3ede8;text-shadow:2px 0 #ff4d7d,-2px 0 #b69cff}
 html.vhs .fx-osd{display:block}
 .fx-osd .a{position:absolute;left:clamp(16px,3vw,36px);top:70px}
 .fx-osd .b{position:absolute;right:clamp(16px,3vw,36px);top:70px;text-align:right}
@@ -799,7 +799,7 @@ html.vhs .fx-osd{display:block}
 .fx-osd .vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55))}
 .fx-osd .trk{position:absolute;left:0;right:0;height:9vh;background:linear-gradient(transparent,rgba(255,255,255,.06) 40%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.04) 60%,transparent);animation:fxtrk 7s linear infinite;mix-blend-mode:screen}
 @keyframes fxtrk{0%{top:-10vh}100%{top:110vh}}
-html.vhs h1,html.vhs h2,html.vhs h3{text-shadow:-2px 0 rgba(255,46,136,.75),2px 0 rgba(0,229,255,.65)}
+html.vhs h1,html.vhs h2,html.vhs h3{text-shadow:-2px 0 rgba(255,77,125,.75),2px 0 rgba(182,156,255,.65)}
 html.vhs img,html.vhs video{filter:saturate(1.35) contrast(1.08) hue-rotate(-8deg)}
 html.vhs main{animation:fxjit 5s steps(1) infinite}
 @keyframes fxjit{0%,96%,100%{transform:none}97%{transform:translateX(2px)}98%{transform:translateX(-3px) skewX(.4deg)}}
@@ -895,7 +895,7 @@ if(!RM&&C.nums)d.querySelectorAll(C.nums).forEach(el=>{let busy=0;el.addEventLis
 (C.wave?d.querySelectorAll(C.wave):[]).forEach(a=>{const t=a.textContent;a.setAttribute('aria-label',t);a.classList.add('fx-wave');a.innerHTML=[...t].map((c,i)=>`<span class="fx-lt" aria-hidden="true" style="--i:${i}">${c===' '?'&nbsp;':c}</span>`).join('')});
 
 /* ---- particle burst on telegram clicks ---- */
-if(!RM){let cv,cx,parts=[],run=0;const cols=['#ff6a2b','#c04d78','#ff2e88','#7dff3a','#f3ede8'];
+if(!RM){let cv,cx,parts=[],run=0;const cols=['#ff6a2b','#c04d78','#ff4d7d','#ffb08a','#f3ede8'];
  const loop=()=>{cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.l>0);parts.forEach(p=>{p.vy+=.25;p.vx*=.985;p.x+=p.vx;p.y+=p.vy;p.l-=1;p.r+=p.vr;cx.save();cx.globalAlpha=Math.min(1,p.l/30);cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore()});
   if(parts.length)requestAnimationFrame(loop);else{run=0;cv.remove();cv=null}};
  d.addEventListener('click',e=>{const a=e.target.closest('a[href*="t.me"]');if(!a)return;if(!cv){cv=d.createElement('canvas');cv.className='fx-burst';cv.width=innerWidth;cv.height=innerHeight;d.body.appendChild(cv);cx=cv.getContext('2d')}
@@ -913,7 +913,7 @@ if(C.dots){const nav=d.createElement('div');nav.className='fx-side';nav.setAttri
  d.body.appendChild(nav);const spy=()=>{let cur=items[0];items.forEach(it=>{if(it[0].getBoundingClientRect().top<innerHeight*.45)cur=it});items.forEach(it=>it[1].classList.toggle('on',it===cur))};addEventListener('scroll',spy,{passive:true});spy()}
 
 /* ---- console hello for curious devs ---- */
-try{console.log('%c Тимур Копылов %c попробуйте ↑↑↓↓←→←→BA или наберите «glitch» ','background:#ff6a2b;color:#141016;font-weight:700;padding:4px','background:#141016;color:#7dff3a;padding:4px')}catch(e){}
+try{console.log('%c Тимур Копылов %c попробуйте ↑↑↓↓←→←→BA или наберите «glitch» ','background:#ff6a2b;color:#141016;font-weight:700;padding:4px','background:#141016;color:#ffb08a;padding:4px')}catch(e){}
 })();
 </script>
 </body>
