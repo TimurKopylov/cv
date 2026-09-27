@@ -6,7 +6,7 @@
 <meta name="description" content="Тимур Копылов — маркетолог в EdTech и запусках образовательных продуктов.">
 </head>
 <body>
-<title>Тимур Копылов — маркетолог</title>
+<title>Тимур Копылов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
@@ -661,6 +661,49 @@ main{position:relative;z-index:3}
   gsap.utils.toArray('.funnel').forEach(function(f){
     gsap.from(f.children, { opacity:0, x:-14, duration:.6, stagger:.12, ease:'power2.out', scrollTrigger:{ trigger:f, start:'top 90%' } });
   });
+})();
+</script>
+
+<style>
+/* ==== FX layer (main) ==== */
+.fx-progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:80;background:linear-gradient(90deg,var(--ember),var(--rose))}
+.case,.stat,.job{position:relative}
+.fx-spot{position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .35s;background:radial-gradient(520px circle at var(--mx,50%) var(--my,50%),rgba(255,106,43,.10),transparent 45%);z-index:0}
+.case:hover .fx-spot,.stat:hover .fx-spot,.job:hover .fx-spot{opacity:1}
+.hero h1 .l>span{position:relative;display:inline-block}
+.hero h1 .l>span::before,.hero h1 .l>span::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;opacity:0}
+.hero h1 .l>span::before{color:var(--ember);-webkit-text-fill-color:var(--ember)}
+.hero h1 .l>span::after{color:var(--rose);-webkit-text-fill-color:var(--rose)}
+.hero h1.burst .l>span::before{opacity:.8;mix-blend-mode:screen;animation:fxg1 .42s steps(1) both}
+.hero h1.burst .l>span::after{opacity:.7;mix-blend-mode:screen;animation:fxg2 .42s steps(1) both}
+@keyframes fxg1{0%{clip-path:inset(12% 0 60% 0);transform:translate(-5px,0)}33%{clip-path:inset(66% 0 8% 0);transform:translate(4px,0)}66%{clip-path:inset(36% 0 44% 0);transform:translate(-3px,0)}100%{clip-path:inset(0 0 100% 0);transform:none}}
+@keyframes fxg2{0%{clip-path:inset(52% 0 24% 0);transform:translate(5px,0)}50%{clip-path:inset(16% 0 70% 0);transform:translate(-4px,0)}100%{clip-path:inset(0 0 100% 0);transform:none}}
+.tg{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.fx-cta{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;gap:8px;opacity:0;transform:translateY(12px);transition:opacity .35s,transform .35s;pointer-events:none}
+.fx-cta.on{opacity:1;transform:none;pointer-events:auto}
+.fx-cta a{font:600 14px/1 var(--body);text-decoration:none;color:#fff;padding:13px 18px;border-radius:99px;background:linear-gradient(90deg,var(--ember),var(--rose));box-shadow:0 12px 30px -10px rgba(255,106,43,.6)}
+.fx-cta a.alt{background:rgba(28,21,31,.8);backdrop-filter:blur(8px);border:1px solid var(--line)}
+@media (max-width:560px){.fx-cta{left:16px;right:16px;justify-content:center}.fx-cta a{flex:1;text-align:center;white-space:nowrap;font-size:13px;padding:13px 10px}.fx-cta .lg{display:none}}
+@media (prefers-reduced-motion:reduce){.hero h1.burst .l>span::before,.hero h1.burst .l>span::after{animation:none;opacity:0}}
+</style>
+<div class="fx-progress" id="fxProg"></div>
+<div class="fx-cta" id="fxCta"><a href="https://t.me/timurkopylov" target="_blank" rel="noopener">Обсудить<span class="lg"> задачу</span></a><a class="alt" href="design/">Дизайн<span class="lg">-портфолио</span> ↗</a></div>
+<script>
+(()=>{
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches, FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const pg=document.getElementById('fxProg'),cta=document.getElementById('fxCta');
+addEventListener('scroll',()=>{const h=document.documentElement,p=h.scrollTop/(h.scrollHeight-h.clientHeight);pg.style.width=p*100+'%';cta.classList.toggle('on',h.scrollTop>innerHeight*.9&&p<.93)},{passive:true});
+// name glitch
+const h1=document.querySelector('.hero h1');
+if(h1){h1.querySelectorAll('.l>span').forEach(s=>s.dataset.text=s.textContent);
+ if(!RM){const burst=()=>{h1.classList.remove('burst');void h1.offsetWidth;h1.classList.add('burst')};setTimeout(burst,1600);setInterval(()=>{if(document.visibilityState==='visible'&&scrollY<innerHeight)burst()},6500);h1.addEventListener('pointerenter',burst)}}
+// scramble section titles
+if(!RM){const ch='!<>-_/[]{}—=+*^?#01';const scr=el=>{const f=el.textContent;let t0=null;const st=t=>{t0??=t;const p=Math.min((t-t0)/700,1);el.textContent=[...f].map((c,i)=>i/f.length<p||c===' '?c:ch[Math.random()*ch.length|0]).join('');if(p<1)requestAnimationFrame(st);else el.textContent=f};requestAnimationFrame(st)};
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){scr(e.target);io.unobserve(e.target)}}),{threshold:.6});document.querySelectorAll('h2').forEach(h=>{if(h.children.length===0)io.observe(h)})}
+// spotlight on cases/stats/jobs
+if(FINE){document.querySelectorAll('.case,.stat,.job').forEach(el=>{const sp=document.createElement('span');sp.className='fx-spot';el.prepend(sp);el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+ // magnetic buttons
+ document.querySelectorAll('.tg,.fx-cta a').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.25}px)`});b.addEventListener('pointerleave',()=>b.style.transform='')})}
 })();
 </script>
 
