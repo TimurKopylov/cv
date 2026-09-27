@@ -10,6 +10,24 @@
 @keyframes fxpulse{70%{box-shadow:0 0 0 10px rgba(255,176,138,0)}100%{box-shadow:0 0 0 0 rgba(255,176,138,0)}}
 @media (prefers-reduced-motion:reduce){.fx-avail i{animation:none}}
 </style>
+<style>
+/* ==== mobile fixes (main) ==== */
+.skills-marquee,.marquee{overflow:hidden;max-width:100%}
+.fx-hs{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -4px;padding:0 4px}
+.fx-hs::-webkit-scrollbar{display:none}
+.fx-hint{display:none;font-size:12px;color:var(--faint);margin-top:8px;letter-spacing:.04em}
+@media (max-width:700px){
+ .fx-hs svg{min-width:640px}
+ .fx-hint{display:block}
+ .nav{background:rgba(20,16,22,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-block:12px;border-bottom:1px solid var(--line)}
+ .fx-ghost{display:none}
+ .fx-cta{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+ .fx-cta a{padding:12px 10px}
+ .outro{padding-bottom:90px}
+ .stat b{font-size:clamp(30px,9vw,40px)}
+ .stat p{font-size:14px;line-height:1.4}
+}
+</style>
 </head>
 <body>
 <style>
@@ -378,7 +396,7 @@ main{position:relative;z-index:3}
     <div class="chart reveal" id="rev">
       <h3>Выручка запусков, которые я продюсировал</h3>
       <p>Суммарно 3,2 млн ₽ за три запуска. Отдельно — результат экспертов на следующем запуске по моей стратегии.</p>
-      <svg viewBox="0 0 900 236" role="img" aria-label="Выручка запусков: крипто 1,8 млн, наставничество 0,9 млн, фитнес 0,48 млн, фитнес следующий запуск 1,5 млн">
+      <div class="fx-hs"><svg viewBox="0 0 900 236" role="img" aria-label="Выручка запусков: крипто 1,8 млн, наставничество 0,9 млн, фитнес 0,48 млн, фитнес следующий запуск 1,5 млн">
         <g class="vlab soft" style="font-size:15px">
           <text x="0" y="36">Эксперт в криптовалюте</text>
           <text x="0" y="92">Наставничество по бизнесу</text>
@@ -391,7 +409,7 @@ main{position:relative;z-index:3}
         <rect class="bar" x="252" y="132" width="138.7" height="24" rx="4" style="transition-delay:.24s"><title>Фитнес: 480 тыс. ₽</title></rect>
         <rect class="bar alt" x="252" y="188" width="433.3" height="24" rx="4" style="transition-delay:.36s"><title>Фитнес, следующий запуск: 1,5 млн ₽</title></rect>
         <g class="vnum"><text x="784" y="38">1,8 млн ₽</text><text x="524" y="94">900 тыс. ₽</text><text x="402" y="150">480 тыс. ₽</text><text x="697" y="206">1,5 млн ₽</text></g>
-      </svg>
+      </svg></div><div class="fx-hint">Листайте график →</div>
       <div class="legend"><span><i style="background:var(--ember)"></i>мой запуск как продюсера</span><span><i style="background:var(--rose)"></i>эксперты сами, по моей стратегии</span></div>
     </div>
 
@@ -486,7 +504,7 @@ main{position:relative;z-index:3}
 
   <section class="exp wrap" aria-labelledby="h-exp">
     <div class="section-head"><h2 id="h-exp">Опыт</h2><p>Несколько ролей параллельно: запуски, клуб и дизайн.</p></div>
-    <div class="tl-chart reveal" id="tl"><svg viewBox="0 0 900 250" role="img" aria-label="Карьера по годам с 2019 по 2026"><line class="grid" x1="150.0" y1="10" x2="150.0" y2="214"/><text class="axis" x="150.0" y="238" text-anchor="middle">2019</text><line class="grid" x1="244.2" y1="10" x2="244.2" y2="214"/><text class="axis" x="244.2" y="238" text-anchor="middle">2020</text><line class="grid" x1="338.4" y1="10" x2="338.4" y2="214"/><text class="axis" x="338.4" y="238" text-anchor="middle">2021</text><line class="grid" x1="432.6" y1="10" x2="432.6" y2="214"/><text class="axis" x="432.6" y="238" text-anchor="middle">2022</text><line class="grid" x1="526.8" y1="10" x2="526.8" y2="214"/><text class="axis" x="526.8" y="238" text-anchor="middle">2023</text><line class="grid" x1="621.0" y1="10" x2="621.0" y2="214"/><text class="axis" x="621.0" y="238" text-anchor="middle">2024</text><line class="grid" x1="715.2" y1="10" x2="715.2" y2="214"/><text class="axis" x="715.2" y="238" text-anchor="middle">2025</text><line class="grid" x1="809.4" y1="10" x2="809.4" y2="214"/><text class="axis" x="809.4" y="238" text-anchor="middle">2026</text><text class="vlab soft" x="0" y="40">Дизайн, арт-дирекшн</text><rect class="bar" x="213.1" y="26" width="666.9" height="20" rx="4" style="transition-delay:0.00s"><title>Дизайн, арт-дирекшн</title></rect><text class="vlab soft" x="0" y="88">Продюсер запусков</text><rect class="bar" x="448.6" y="74" width="235.5" height="20" rx="4" style="transition-delay:0.15s"><title>Продюсер запусков</title></rect><text class="vlab soft" x="0" y="136">Бойцовский клуб</text><rect class="bar alt" x="526.8" y="122" width="353.2" height="20" rx="4" style="transition-delay:0.30s"><title>Бойцовский клуб</title></rect><text class="vlab soft" x="0" y="184">EdTech и YouTube, CEO</text><rect class="bar" x="597.4" y="170" width="282.6" height="20" rx="4" style="transition-delay:0.45s"><title>EdTech и YouTube, CEO</title></rect><line class="now" x1="877.2" y1="6" x2="877.2" y2="214"/></svg></div>
+    <div class="tl-chart reveal" id="tl"><div class="fx-hs"><svg viewBox="0 0 900 250" role="img" aria-label="Карьера по годам с 2019 по 2026"><line class="grid" x1="150.0" y1="10" x2="150.0" y2="214"/><text class="axis" x="150.0" y="238" text-anchor="middle">2019</text><line class="grid" x1="244.2" y1="10" x2="244.2" y2="214"/><text class="axis" x="244.2" y="238" text-anchor="middle">2020</text><line class="grid" x1="338.4" y1="10" x2="338.4" y2="214"/><text class="axis" x="338.4" y="238" text-anchor="middle">2021</text><line class="grid" x1="432.6" y1="10" x2="432.6" y2="214"/><text class="axis" x="432.6" y="238" text-anchor="middle">2022</text><line class="grid" x1="526.8" y1="10" x2="526.8" y2="214"/><text class="axis" x="526.8" y="238" text-anchor="middle">2023</text><line class="grid" x1="621.0" y1="10" x2="621.0" y2="214"/><text class="axis" x="621.0" y="238" text-anchor="middle">2024</text><line class="grid" x1="715.2" y1="10" x2="715.2" y2="214"/><text class="axis" x="715.2" y="238" text-anchor="middle">2025</text><line class="grid" x1="809.4" y1="10" x2="809.4" y2="214"/><text class="axis" x="809.4" y="238" text-anchor="middle">2026</text><text class="vlab soft" x="0" y="40">Дизайн, арт-дирекшн</text><rect class="bar" x="213.1" y="26" width="666.9" height="20" rx="4" style="transition-delay:0.00s"><title>Дизайн, арт-дирекшн</title></rect><text class="vlab soft" x="0" y="88">Продюсер запусков</text><rect class="bar" x="448.6" y="74" width="235.5" height="20" rx="4" style="transition-delay:0.15s"><title>Продюсер запусков</title></rect><text class="vlab soft" x="0" y="136">Бойцовский клуб</text><rect class="bar alt" x="526.8" y="122" width="353.2" height="20" rx="4" style="transition-delay:0.30s"><title>Бойцовский клуб</title></rect><text class="vlab soft" x="0" y="184">EdTech и YouTube, CEO</text><rect class="bar" x="597.4" y="170" width="282.6" height="20" rx="4" style="transition-delay:0.45s"><title>EdTech и YouTube, CEO</title></rect><line class="now" x1="877.2" y1="6" x2="877.2" y2="214"/></svg></div><div class="fx-hint">Листайте график →</div></div>
     <div class="job reveal"><div class="when">2023 — сейчас</div><div><h3>EdTech-проекты и YouTube медиа-кластер</h3><div class="pos">Исполнительный директор, маркетинг и запуски</div><p>Запуски образовательных продуктов, мероприятия, контент, команда и отчётность.</p></div></div>
     <div class="job reveal"><div class="when">2023 — сейчас</div><div><h3>Бойцовский клуб «Первый номер»</h3><div class="pos">Администратор: заявки, CRM, найм, ребрендинг</div><p>Воронка заявок с отбором, собеседования, офлайн-мероприятия.</p></div></div>
     <div class="job reveal"><div class="when">2022 — 2024</div><div><h3>Онлайн-запуски, фриланс</h3><div class="pos">Продюсер образовательных продуктов</div><p>Фитнес, бьюти, инвестиции, крипта, бизнес. 25+ кастдевов, команда до 12 человек, личные продажи на чеки до 300 тыс. ₽.</p></div></div>
@@ -746,7 +764,7 @@ if(h1){h1.querySelectorAll('.l>span').forEach(s=>s.dataset.text=s.textContent);
  if(!RM){const burst=()=>{h1.classList.remove('burst');void h1.offsetWidth;h1.classList.add('burst')};setTimeout(burst,1600);setInterval(()=>{if(document.visibilityState==='visible'&&scrollY<innerHeight)burst()},6500);h1.addEventListener('pointerenter',burst)}}
 // scramble section titles
 if(!RM){const ch='!<>-_/[]{}—=+*^?#01';const scr=el=>{const f=el.textContent;let t0=null;const st=t=>{t0??=t;const p=Math.min((t-t0)/700,1);el.textContent=[...f].map((c,i)=>i/f.length<p||c===' '?c:ch[Math.random()*ch.length|0]).join('');if(p<1)requestAnimationFrame(st);else el.textContent=f};requestAnimationFrame(st)};
- const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){scr(e.target);io.unobserve(e.target)}}),{threshold:.6});document.querySelectorAll('h2').forEach(h=>{if(h.children.length===0)io.observe(h)})}
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){scr(e.target);io.unobserve(e.target)}}),{threshold:.6});document.querySelectorAll('h2').forEach(h=>{if(h.children.length===0&&h.textContent.trim().length<32&&innerWidth>700)io.observe(h)})}
 // spotlight on cases/stats/jobs
 if(FINE){document.querySelectorAll('.case,.stat,.job').forEach(el=>{const sp=document.createElement('span');sp.className='fx-spot';el.prepend(sp);el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')})});
  // magnetic buttons
@@ -787,7 +805,7 @@ html.vhs .fx-vhs-btn i{background:#ff2e2e;box-shadow:0 0 10px #ff2e2e;animation:
 @keyframes fxrec{50%{opacity:.2}}
 .fx-vhs-btn kbd{font:inherit;opacity:.45;border:1px solid rgba(243,237,232,.25);border-radius:4px;padding:2px 4px}
 @media (max-width:760px){#fxVhs{display:none}.fx-vhs-btn kbd{display:none}}
-.fx-vhs-inline{position:static;display:inline-flex;margin-top:14px;backdrop-filter:none}
+.fx-vhs-inline{position:static;display:inline-flex;width:max-content;margin-top:14px;backdrop-filter:none}
 @media (min-width:761px){.fx-vhs-inline{display:none}}
 /* VHS mode */
 .fx-osd{position:fixed;inset:0;z-index:185;pointer-events:none;display:none;font:400 clamp(16px,1.8vw,24px)/1 'VT323','Courier New',monospace;color:#f3ede8;text-shadow:2px 0 #ff4d7d,-2px 0 #b69cff}
@@ -884,7 +902,7 @@ if(ghosts.length&&!RM){const up=()=>{ghosts.forEach(([h,g])=>{const r=h.getBound
 /* ---- scroll velocity → marquees ---- */
 if(!RM&&C.marquee){const els=[...d.querySelectorAll(C.marquee)];let last=scrollY,v=0,sv=0;
  (function f(){const y=scrollY;v=y-last;last=y;sv+=(v-sv)*.12;const k=Math.max(-40,Math.min(40,sv));
-  els.forEach(el=>{el.getAnimations({subtree:true}).forEach(a=>{a.playbackRate=(1+Math.abs(k)*.12)*(k<-0.5?-1:1)});el.style.transform=`skewX(${-k*.25}deg)`});requestAnimationFrame(f)})()}
+  els.forEach(el=>{el.getAnimations({subtree:true}).forEach(a=>{a.playbackRate=(1+Math.abs(k)*.12)*(k<-0.5?-1:1)});if(FINE)el.style.transform=`skewX(${-k*.25}deg)`});requestAnimationFrame(f)})()}
 
 /* ---- number scramble on hover ---- */
 if(!RM&&C.nums)d.querySelectorAll(C.nums).forEach(el=>{let busy=0;el.addEventListener('pointerenter',()=>{if(busy)return;busy=1;
