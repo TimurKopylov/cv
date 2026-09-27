@@ -105,8 +105,8 @@ input[type=range]{width:100%;accent-color:var(--accent);height:24px}
 
 /* stop metrics */
 .stops{display:grid;gap:10px}
-.stop{display:grid;grid-template-columns:170px 1fr;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;align-items:start}
-.stop .th{background:var(--warn-soft);color:var(--warn);font-weight:700;border-radius:10px;padding:8px 10px;font-size:14.5px;text-align:center}
+.stop{display:grid;grid-template-columns:200px 1fr;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;align-items:start}
+.stop .th{white-space:nowrap;background:var(--warn-soft);color:var(--warn);font-weight:700;border-radius:10px;padding:8px 10px;font-size:14.5px;text-align:center}
 .stop p{margin:0;font-size:15.5px}
 
 /* ways */
@@ -158,9 +158,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   .product,.way,.calc{padding:22px}
   .hero{padding-top:48px}
 }
+
+/* motion & texture */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#ff8a3d);z-index:20}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:30;opacity:.045;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain .6s steps(4) infinite}
+@keyframes grain{to{transform:translate(6%,-5%)}}
+.hero:before{content:"";position:absolute;right:-12%;top:-30%;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(201,58,98,.18),transparent 65%);filter:blur(10px);animation:float 14s ease-in-out infinite alternate;pointer-events:none}
+.hero:after{content:"";position:absolute;left:-10%;bottom:-40%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(58,35,64,.14),transparent 65%);animation:float 18s ease-in-out infinite alternate-reverse;pointer-events:none}
+@keyframes float{to{transform:translate(-40px,30px) scale(1.08)}}
+.hero .wrap{position:relative;z-index:1}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.card,.stat,.way,.stop,ol.steps li{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.card:hover,.stat:hover,.stop:hover,ol.steps li:hover{transform:translateY(-3px);box-shadow:0 14px 30px -20px rgba(58,35,64,.45);border-color:#dccfc3}
+.way:hover{transform:translateY(-2px)}
+.bar .fill{transform-origin:left;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.bars.in .fill{transform:scaleX(1)}
+.product{background:radial-gradient(120% 140% at 100% 0%,#5a2a5e 0%,var(--plum) 55%,#241528 100%)}
+.product:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border:1px solid rgba(255,255,255,.12);border-radius:50%;box-shadow:0 0 0 40px rgba(255,255,255,.03),0 0 0 80px rgba(255,255,255,.02)}
+.hero h1 em{background:linear-gradient(90deg,var(--accent),#ff7a45);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (prefers-reduced-motion:reduce){.grain,.hero:before,.hero:after{animation:none}.reveal{opacity:1;transform:none;transition:none}.bar .fill{transform:none;transition:none}}
 </style>
 </head>
 <body>
+<div class="progress" id="prog"></div><div class="grain" aria-hidden="true"></div>
 
 <nav><div class="wrap">
   <a href="#start">С чего начал</a>
@@ -173,24 +194,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <header class="hero"><div class="wrap">
   <div class="kicker">Тестовое · Продюсер запусков · Онлайн Фитнес</div>
   <h1>Новые деньги из базы — <em>без Катиного времени</em> и без риска для магазина</h1>
-  <p class="lead">Два задания: продукт с другим лицом, который приносит выручку в первый же месяц, и три способа продавать школу покупательницам YouPumpy. Цифры можно покрутить прямо на странице.</p>
+  <p class="lead">Два задания: новый продукт с другим лицом, который приносит деньги уже в первый месяц, и три способа продавать программы школы покупательницам YouPumpy. Цифры можно покрутить прямо на странице — подставьте свои.</p>
   <div class="author"><span class="dot"></span><span>Тимур Копылов · <a href="https://t.me/timurkopylov">Telegram @timurkopylov</a> · <a href="https://timurkopylov.github.io/cv/">мои кейсы</a></span></div>
   <div class="stats">
     <div class="stat"><div class="n">~4,3 млн ₽</div><div class="t">выручка марафона «Мягкая стройность 40+» за первый месяц (базовый сценарий)</div></div>
     <div class="stat"><div class="n">~710 тыс. ₽</div><div class="t">школе за месяц от покупательниц магазина — способ, который запускаю первым</div></div>
-    <div class="stat"><div class="n">2 недели</div><div class="t">чтобы по пяти цифрам понять: продолжаем или останавливаемся</div></div>
+    <div class="stat"><div class="n">2 недели</div><div class="t">и по пяти цифрам понятно, продолжаем или останавливаемся</div></div>
   </div>
 </div></header>
 
 <section id="start"><div class="wrap two">
   <div>
     <div class="kicker">С чего я начал</div>
-    <h2>Половина базы смотрит на продукты не про себя</h2>
-    <p>Прошёлся по витрине, соцсетям и магазину. На витрине 11 программ, и во всех лицо — Катя: дом, зал, беременность, питание. Аудитория — женщины 25–55, медиана 38. При этом женщине за 40 здесь почти нечего выбрать: нет пилатеса, спины, мягких нагрузок.</p>
-    <p>У меня есть свой опыт в фитнесе — марафон двух экспертов. На ~20 тыс. охвата он дал 480 тыс. ₽. Потом я перестроил продуктовую линейку (интенсив-трипвайр → флагман), средний чек вырос в 3 раза, и следующий запуск принёс 1,5 млн ₽. Масштаб у вас другой, но логика та же: продукт под конкретную боль и понятная лесенка цен.</p>
+    <h2>Заметная часть базы смотрит на продукты не про себя</h2>
+    <p>Сначала просто посидел на витрине, в соцсетях школы и в магазине YouPumpy. Бросилось в глаза вот что: программ одиннадцать, и во всех лицо — Катя. Дом, зал, беременность, питание. А аудитория — женщины от 25 до 55, медиана 38. Для женщины за сорок на витрине почти ничего нет: ни пилатеса, ни спины, ни мягкой нагрузки.</p>
+    <p>У меня был похожий проект — фитнес-марафон двух экспертов. Первый запуск дал 480 тыс. ₽ примерно с 20 тыс. охвата. Потом мы добавили недорогой интенсив перед основной программой, средний чек вырос втрое, и следующий запуск принёс 1,5 млн ₽. Масштаб у вас другой, но принцип я бы взял тот же: продукт под конкретную боль и понятная лесенка цен.</p>
   </div>
   <div class="note">
-    <p><b>Честно о цифрах.</b> Ваших конверсий и доставляемости базы я не знаю. Всё ниже — осторожные допущения, я их помечаю. На первой неделе работы заменил бы их данными прошлых запусков. Поэтому в расчётах есть ползунки: подставьте свои цифры и посмотрите, что изменится.</p>
+    <p><b>Сразу оговорюсь про цифры.</b> Ваших конверсий и доставляемости я не знаю, поэтому всё ниже — мои осторожные допущения. В первую неделю работы я бы заменил их на реальные данные прошлых запусков. А пока в расчётах есть ползунки — можно подставить свои цифры и посмотреть, что изменится.</p>
   </div>
 </div></section>
 
@@ -201,68 +222,68 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   <div class="product">
     <div class="kicker">Что запускаю</div>
     <h3>«Мягкая стройность 40+»</h3>
-    <p>21-дневный марафон пилатеса и силовых без нагрузки на суставы и спину. Для тех, кому за 40 и кому «жёсткие» программы уже не подходят.</p>
+    <p>Марафон на 21 день: пилатес и силовые без нагрузки на суставы и спину. Для тех, кому за сорок и кому «жёсткие» программы уже не подходят.</p>
     <div class="tags">
-      <span class="tag"><b>3 990 ₽</b> — сама</span>
-      <span class="tag"><b>6 990 ₽</b> — с обратной связью тренера</span>
+      <span class="tag"><b>3 990 ₽</b> — занимаешься сама</span>
+      <span class="tag"><b>6 990 ₽</b> — тренер смотрит технику</span>
       <span class="tag">средний чек <b>~4 590 ₽</b></span>
     </div>
   </div>
 
   <div class="why">
-    <div class="card"><h4>Закрывает дыру на витрине</h4><p>Не спорит с Катиными марафонами за 30-летнюю девушку, а забирает сегмент, который сейчас уходит к другим.</p></div>
-    <div class="card"><h4>Другое лицо здесь естественно</h4><p>Катя — чемпионка по фитнес-бикини, а не инструктор пилатеса. Новому тренеру не нужно с ней конкурировать.</p></div>
-    <div class="card"><h4>Формат база уже знает</h4><p>Марафон не нужно объяснять. Переиспользуем лендинги, платформу и кураторов.</p></div>
+    <div class="card"><h4>Закрывает пустое место на витрине</h4><p>Не отбирает покупательниц у Катиных марафонов, а забирает тех, кто сейчас уходит к другим.</p></div>
+    <div class="card"><h4>Лицом естественно быть другому</h4><p>Катя — чемпионка по фитнес-бикини, пилатес не её территория. Новому тренеру не придётся с ней соревноваться.</p></div>
+    <div class="card"><h4>Формат база уже знает</h4><p>Механику марафона объяснять не надо. Лендинги, платформу и кураторов берём готовые.</p></div>
   </div>
 
-  <h3>Кто лицо и где его найти</h3>
+  <h3>Кто будет лицом</h3>
   <div class="two">
     <div>
-      <p>Инструктор пилатеса или ЛФК <b>40–50 лет в отличной форме</b>. Ровесница аудитории: реакция «она как я, и у неё получилось» работает сильнее кубиков на прессе. Медицинский бэкграунд — плюс, для 40+ это вопрос доверия.</p>
-      <p>Условия: <b>200 тыс. ₽ за съёмки + 10% с выручки</b>. Процент — чтобы тренер сама хотела продавать в своих соцсетях.</p>
-      <p><b>Катя здесь не лицо, а рекомендатель.</b> Один пост «я нашла тренера для тех, кому за 40» переносит её доверие на продукт и не отнимает её время.</p>
+      <p>Инструктор пилатеса или ЛФК, <b>40–50 лет, в отличной форме</b>. Ровесница аудитории. На женщину за сорок сильнее действует «она как я, и у неё получилось», чем кубики на прессе у двадцатипятилетней. Если у тренера есть медицинское образование — ещё лучше.</p>
+      <p>Условия: <b>200 тыс. ₽ за съёмки и 10% с выручки</b>. Процент нужен, чтобы тренеру самой было интересно продавать в своих соцсетях.</p>
+      <p><b>Катя в этом продукте не лицо, а рекомендатель.</b> Одного поста в духе «я нашла тренера для тех, кому за сорок» хватит, чтобы перенести на продукт часть её доверия. Её время это почти не займёт.</p>
     </div>
     <ol class="steps">
-      <li><b>Внутри команды Кати.</b> Тренеры и кураторы, которых база уже видела. Быстрее всего.</li>
-      <li><b>Инструкторы студий пилатеса с блогом 10–50 тыс.</b> По роликам сразу видно, как человек держится на камере.</li>
-      <li><b>Кастинг через канал школы:</b> «ищем тренера для нового направления». Заодно прогрев.</li>
+      <li><b>В команде Кати.</b> Тренеры и кураторы, которых база уже видела. Доверие к ним уже есть.</li>
+      <li><b>В московских студиях пилатеса.</b> Смотрю инструкторов с блогом на 10–50 тыс. — по роликам сразу видно, как человек держится в кадре.</li>
+      <li><b>Через кастинг в канале школы:</b> «ищем тренера для нового направления». Заодно это первый прогрев.</li>
     </ol>
   </div>
 
-  <h3>План на месяц</h3>
+  <h3>Как пройдёт месяц</h3>
   <div class="timeline">
-    <div class="tl"><div class="w">НЕДЕЛЯ 1</div><h4>Тренер и съёмка</h4><p>Выбираем лицо, снимаем трейлер, бесплатный урок и первые 7 дней. Собираем лендинг.</p></div>
-    <div class="tl"><div class="w">НЕДЕЛЯ 2</div><h4>Прогрев</h4><p>3 письма: проблема 40+ → история тренера → бесплатный урок. Катя рекомендует тренера.</p></div>
-    <div class="tl"><div class="w">НЕДЕЛЯ 3</div><h4>Продажи</h4><p>Урок → оффер, ранняя цена 72 часа, дожим. Параллельно доснимаем дни 8–21.</p></div>
-    <div class="tl"><div class="w">НЕДЕЛЯ 4</div><h4>Старт</h4><p>Марафон идёт, кураторы на связи, допродаём старший тариф.</p></div>
+    <div class="tl"><div class="w">НЕДЕЛЯ 1</div><h4>Тренер и съёмка</h4><p>Находим тренера, снимаем трейлер, бесплатный урок и первые 7 дней. Собираем лендинг.</p></div>
+    <div class="tl"><div class="w">НЕДЕЛЯ 2</div><h4>Прогрев</h4><p>Три письма: проблема после сорока → история тренера → приглашение на бесплатный урок. Катя рекомендует тренера.</p></div>
+    <div class="tl"><div class="w">НЕДЕЛЯ 3</div><h4>Продажи</h4><p>После урока — предложение, ранняя цена на 72 часа, дожимающие письма. Параллельно доснимаем дни 8–21.</p></div>
+    <div class="tl"><div class="w">НЕДЕЛЯ 4</div><h4>Старт</h4><p>Марафон идёт, кураторы на связи, допродаём тариф с обратной связью.</p></div>
   </div>
-  <p class="muted small" style="margin-top:10px">Продаём, не дожидаясь всех съёмок: уроки открываются по дням, достаточно готовой первой недели.</p>
+  <p class="muted small" style="margin-top:10px">Ждать, пока снимем все 21 урок, не нужно: уроки открываются по одному в день, для старта продаж хватает готовой первой недели.</p>
 
-  <h3>Откуда деньги</h3>
+  <h3>Откуда возьмутся деньги</h3>
   <div class="scroll"><table class="tbl wide">
-    <tr><th>Канал</th><th>Логика (допущения)</th><th style="text-align:right">Продажи</th></tr>
-    <tr><td>Email, активные ~350 тыс.</td><td>5% регистрируются на бесплатный урок → 3% покупают</td><td class="num">~525</td></tr>
-    <tr><td>Email, неактивные ~650 тыс.</td><td>1 реактивационное + 1 продающее письмо, 0,02% покупок</td><td class="num">~130</td></tr>
-    <tr><td>Соцсети школы + Катя</td><td>посты и сторис в TG, VK</td><td class="num">~150</td></tr>
-    <tr><td>VK Ads, ретаргет на базу</td><td>200 тыс. ₽, ~1 500 ₽ за продажу</td><td class="num">~130</td></tr>
-    <tr class="total"><td>Итого</td><td></td><td class="num">~935</td></tr>
+    <tr><th>Канал</th><th>Как считал (допущения)</th><th style="text-align:right">Продажи</th></tr>
+    <tr><td>Письма активной части базы, ~350 тыс.</td><td>5% записываются на бесплатный урок, из них 3% покупают</td><td class="num">~525</td></tr>
+    <tr><td>Письма неактивной части, ~650 тыс.</td><td>одно письмо «вы ещё с нами?» и одно продающее, покупает 0,02%</td><td class="num">~130</td></tr>
+    <tr><td>Соцсети школы и рекомендация Кати</td><td>посты и сторис в Telegram и VK</td><td class="num">~150</td></tr>
+    <tr><td>Реклама VK на свою же базу</td><td>200 тыс. ₽, примерно 1 500 ₽ за продажу</td><td class="num">~130</td></tr>
+    <tr class="total"><td>Всего</td><td></td><td class="num">~935</td></tr>
   </table></div>
-  <p class="small muted" style="margin-top:12px">Почему не шлю весь миллион одинаково: база — главный актив. Рассылка по «мёртвым» адресам бьёт по доставляемости всех будущих Катиных запусков. Основной поток — по активным, неактивных будим отдельно и аккуратно. Сверка с моим марафоном: там было ~24 ₽ выручки на человека охвата, здесь закладываю ~4 ₽ на контакт — для холодной базы и нового лица осторожность оправдана.</p>
+  <p class="small muted" style="margin-top:12px">Почему не рассылаю письма на весь миллион сразу: база — главное, что есть у проекта. Если слать много писем на «мёртвые» адреса, почтовики начнут отправлять в спам и будущие Катины запуски. Поэтому основной поток идёт по активной части, а неактивную будим отдельно и осторожно. Для самопроверки сравнил с тем марафоном: там на человека охвата приходилось ~24 ₽ выручки, здесь закладываю ~4 ₽ на контакт — часть базы холодная, лицо новое, лучше перестраховаться.</p>
 
   <div class="calc" id="calc1">
     <div>
       <h4>Посчитайте на своих цифрах</h4>
-      <p class="small muted">Фикс-расходы ~1,1 млн ₽ + 10% тренеру.</p>
+      <p class="small muted">Постоянные расходы ~1,1 млн ₽ и 10% тренеру.</p>
       <div class="ctl"><label><span>Активная база, тыс.</span><span id="v_a"></span></label><input id="a" type="range" min="100" max="700" step="10" value="350"></div>
-      <div class="ctl"><label><span>Регистрации на бесплатный урок</span><span id="v_r"></span></label><input id="r" type="range" min="1" max="10" step="0.5" value="5"></div>
-      <div class="ctl"><label><span>Покупки из регистраций</span><span id="v_c"></span></label><input id="c" type="range" min="0.5" max="6" step="0.5" value="3"></div>
+      <div class="ctl"><label><span>Записались на бесплатный урок</span><span id="v_r"></span></label><input id="r" type="range" min="1" max="10" step="0.5" value="5"></div>
+      <div class="ctl"><label><span>Купили из записавшихся</span><span id="v_c"></span></label><input id="c" type="range" min="0.5" max="6" step="0.5" value="3"></div>
       <div class="ctl"><label><span>Продажи из других каналов</span><span id="v_o"></span></label><input id="o" type="range" min="0" max="1000" step="10" value="410"></div>
       <div class="ctl"><label><span>Средний чек, ₽</span><span id="v_p"></span></label><input id="p" type="range" min="2990" max="6990" step="100" value="4590"></div>
     </div>
     <div class="out">
       <div class="row"><span>Продаж</span><span class="v" id="o_s"></span></div>
       <div class="row big"><span>Выручка</span><span class="v" id="o_rev"></span></div>
-      <div class="row"><span>Расходы (фикс + 10%)</span><span class="v" id="o_cost"></span></div>
+      <div class="row"><span>Расходы</span><span class="v" id="o_cost"></span></div>
       <div class="row profit"><span>Остаётся</span><span class="v" id="o_pr"></span></div>
     </div>
   </div>
@@ -270,36 +291,36 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   <h3>Бюджет</h3>
   <div class="scroll"><table class="tbl">
     <tr><th>Статья</th><th style="text-align:right">₽</th></tr>
-    <tr><td>Тренер, фикс</td><td class="num">200 000</td></tr>
-    <tr><td>Съёмка 21 урока + монтаж (2 студийных дня)</td><td class="num">350 000</td></tr>
-    <tr><td>Лендинг, креативы</td><td class="num">100 000</td></tr>
-    <tr><td>Рассылки (зависит от вашего тарифа ESP)</td><td class="num">150 000</td></tr>
-    <tr><td>VK Ads</td><td class="num">200 000</td></tr>
+    <tr><td>Тренер, фиксированная часть</td><td class="num">200 000</td></tr>
+    <tr><td>Съёмка 21 урока и монтаж (два дня в студии)</td><td class="num">350 000</td></tr>
+    <tr><td>Лендинг и креативы</td><td class="num">100 000</td></tr>
+    <tr><td>Рассылки (зависит от вашего тарифа сервиса рассылок)</td><td class="num">150 000</td></tr>
+    <tr><td>Реклама VK</td><td class="num">200 000</td></tr>
     <tr><td>Кураторы для старшего тарифа</td><td class="num">~100 000</td></tr>
-    <tr class="total"><td>Итого фикс</td><td class="num">~1,1 млн</td></tr>
-    <tr><td>+ 10% тренеру с выручки</td><td class="num">~430 000</td></tr>
+    <tr class="total"><td>Итого постоянные расходы</td><td class="num">~1,1 млн</td></tr>
+    <tr><td>И 10% тренеру с выручки</td><td class="num">~430 000</td></tr>
   </table></div>
-  <p class="small muted" style="margin-top:12px">В базовом сценарии чистыми ~2,8 млн ₽ в первый месяц, дальше продукт живёт в витрине постоянно. Если всё сработает вдвое хуже — выручка ~2,1 млн, запуск всё равно окупается.</p>
+  <p class="small muted" style="margin-top:12px">В базовом сценарии после всех расходов остаётся около 2,8 млн ₽. Если всё сработает вдвое хуже, выручка будет около 2,1 млн — запуск всё равно окупится. И продукт никуда не девается: дальше его можно продавать постоянно.</p>
 
-  <h3>Когда останавливаться: цифры через 2 недели</h3>
+  <h3>Когда остановиться: на что смотрю через две недели</h3>
   <div class="stops">
-    <div class="stop"><div class="th">регистрации &lt; 2%</div><p>от активной базы (план 5%). Не цепляет лицо или оффер — меняю подачу <b>до</b> старта продаж, а не после.</p></div>
-    <div class="stop"><div class="th">досмотр &lt; 50%</div><p>бесплатного урока. Тренер не держит внимание на камере.</p></div>
-    <div class="stop"><div class="th">покупки &lt; 1%</div><p>от регистраций за первые 72 часа продаж (план 3%). Продукт не продаётся — режу расходы.</p></div>
-    <div class="stop"><div class="th">отписки &gt; 0,5%</div><p>или жалобы на спам &gt; 0,1% на письмо. Стоп рассылки по этому сегменту: база дороже одного запуска.</p></div>
-    <div class="stop"><div class="th">продажа &gt; 2 300 ₽</div><p>в VK Ads после 50 тыс. открута (половина среднего чека) — выключаю канал.</p></div>
+    <div class="stop"><div class="th">записались &lt; 2%</div><p>активной базы (рассчитываю на 5%). Не цепляет тренер или предложение — меняю подачу <b>до</b> старта продаж, а не после.</p></div>
+    <div class="stop"><div class="th">досмотрели &lt; 50%</div><p>бесплатного урока. Тренер не удерживает внимание в кадре.</p></div>
+    <div class="stop"><div class="th">купили &lt; 1%</div><p>записавшихся за первые 72 часа продаж (рассчитываю на 3%). Продукт не продаётся — урезаю расходы.</p></div>
+    <div class="stop"><div class="th">отписки &gt; 0,5%</div><p>или жалобы на спам больше 0,1% с письма. Прекращаю рассылку по этому сегменту: база дороже одного запуска.</p></div>
+    <div class="stop"><div class="th">продажа &gt; 2 300 ₽</div><p>через рекламу VK после первых 50 тыс. бюджета (это половина среднего чека) — отключаю канал.</p></div>
   </div>
 </div></section>
 
 <section id="t2"><div class="wrap">
   <div class="kicker">Задание 2</div>
-  <h2>Продавать школу покупательницам YouPumpy и не мешать магазину</h2>
+  <h2>Продавать программы покупательницам YouPumpy и не мешать магазину</h2>
   <div class="two">
     <div>
-      <p>Леггинсы в магазине стоят 9–16 тыс. ₽. Значит, покупательница платёжеспособна и уже тренируется или собирается. Это тёплая аудитория: её не нужно убеждать, что спорт — это хорошо.</p>
-      <p class="small muted">Для расчётов взял <b>3 000 заказов в месяц</b> и <b>60 тыс. покупательниц в базе</b> с согласием на рассылку. Реальные цифры меняются ползунком ниже.</p>
+      <p>Посмотрел магазин: леггинсы стоят 9–16 тыс. ₽. Значит, покупательница при деньгах и уже тренируется или вот-вот начнёт. Убеждать её, что спорт — это хорошо, не нужно: это тёплая аудитория.</p>
+      <p class="small muted">Цифр магазина я не знаю, поэтому считал на примере: <b>3 000 заказов в месяц</b> и <b>60 тыс. покупательниц в базе</b> с согласием на рассылку. Реальные цифры можно подставить ползунком ниже.</p>
     </div>
-    <div class="note"><p><b>Важная деталь.</b> У школы и магазина, скорее всего, разные юрлица. Передать базу магазина школе без согласия покупательниц нельзя (152-ФЗ). Поэтому все три способа работают на точках контакта самого магазина — базу никто никуда не переносит.</p></div>
+    <div class="note"><p><b>Одна важная вещь.</b> Скорее всего, у школы и магазина разные юрлица. Тогда передать школе базу магазина без согласия покупательниц нельзя (152-ФЗ). Поэтому все три способа работают внутри самого магазина — базу никто никуда не передаёт.</p></div>
   </div>
 
   <div class="ways">
@@ -307,31 +328,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
       <div class="hd"><div><span class="badge">Запускаю первым</span><h3>1. Предложение сразу после оплаты заказа</h3></div><div class="money">~710 тыс. ₽</div></div>
       <div class="path"><span>Оплатила леггинсы</span><i>→</i><span>Блок на странице «Спасибо» и в письме</span><i>→</i><span>Бесплатный урок</span><i>→</i><span>«Упругая попа 1.0» за 3 950 ₽ вместо 7 900, 72 часа</span></div>
       <dl class="kv">
-        <dt>Кого берём</dt><dd>Каждую покупательницу в момент, когда мотивация на пике — она только что купила форму.</dd>
+        <dt>Кого берём</dt><dd>Каждую покупательницу в момент, когда она только что оплатила леггинсы. Мотивация в этот момент самая высокая.</dd>
         <dt>Что говорим</dt><dd>«Леггинсы подчеркнут форму, а программа её сделает».</dd>
-        <dt>Через месяц смотрим</dt><dd>доля заказов с покупкой марафона (цель от 4%), лендинг → оплата (от 15%), начали тренироваться к 3-му дню (от 70%).</dd>
+        <dt>Через месяц смотрим</dt><dd>какая доля заказов закончилась покупкой марафона (цель — от 4%), сколько дошли с лендинга до оплаты (от 15%), сколько начали заниматься к третьему дню (от 70%).</dd>
       </dl>
-      <div class="shop"><b>Магазин:</b> продажи не меняются. Предложение появляется после оплаты, в оформление заказа ничего не добавляем. Скидку даёт школа.</div>
+      <div class="shop"><b>Магазин:</b> ничего не меняется. Предложение появляется только после оплаты, в оформление заказа мы ничего не добавляем. Скидку даёт школа, а не магазин.</div>
     </div>
 
     <div class="way">
-      <div class="hd"><div><h3>2. QR-карточка в посылке: 7 дней в подарок</h3></div><div class="money">~320 тыс. ₽</div></div>
-      <div class="path"><span>Распаковала заказ</span><i>→</i><span>Карточка «7 дней с Катей в подарок»</span><i>→</i><span>Неделя «Метода Усмановой»</span><i>→</i><span>Флагман за 9 900 ₽ на 5–7-й день</span></div>
+      <div class="hd"><div><h3>2. Карточка с QR-кодом в посылке: 7 дней тренировок в подарок</h3></div><div class="money">~320 тыс. ₽</div></div>
+      <div class="path"><span>Открыла посылку</span><i>→</i><span>Карточка «7 дней с Катей в подарок»</span><i>→</i><span>Неделя «Метода Усмановой»</span><i>→</i><span>Флагман за 9 900 ₽ на 5–7-й день</span></div>
       <dl class="kv">
-        <dt>Кого берём</dt><dd>Покупательниц, получивших заказ.</dd>
-        <dt>Через месяц смотрим</dt><dd>активация QR (от 15%), дошли до 5-го дня (от 40%), купили (от 10%).</dd>
+        <dt>Кого берём</dt><dd>Покупательниц, которые получили заказ.</dd>
+        <dt>Через месяц смотрим</dt><dd>сколько человек отсканировали QR-код (цель — от 15%), сколько дошли до пятого дня (от 40%), сколько купили (от 10%).</dd>
       </dl>
-      <div class="shop"><b>Магазин:</b> нейтрально или плюс. Карточка стоит ~20 ₽, на обороте «−10% на следующий заказ YouPumpy» — повторные покупки растут.</div>
+      <div class="shop"><b>Магазин:</b> продажи не падают, скорее растут. Карточка стоит около 20 ₽, на обороте — скидка 10% на следующий заказ в YouPumpy.</div>
     </div>
 
     <div class="way">
       <div class="hd"><div><h3>3. Челлендж «21 день в YouPumpy»</h3></div><div class="money">~340 тыс. ₽</div></div>
-      <div class="path"><span>2 письма и пост магазина</span><i>→</i><span>Марафон по спеццене 5 900 ₽</span><i>→</i><span>Прогресс в форме YouPumpy с хэштегом</span><i>→</i><span>Лучшим — комплект</span></div>
+      <div class="path"><span>2 письма и пост магазина</span><i>→</i><span>Марафон по специальной цене 5 900 ₽</span><i>→</i><span>Прогресс в одежде YouPumpy с хэштегом</span><i>→</i><span>Лучшим — комплект</span></div>
       <dl class="kv">
-        <dt>Кого берём</dt><dd>Базу магазина с согласием на рассылки, прежде всего купивших за полгода.</dd>
-        <dt>Через месяц смотрим</dt><dd>клики в письмах (от 4%), покупки с лендинга (от 8%), число постов с хэштегом.</dd>
+        <dt>Кого берём</dt><dd>Покупательниц из базы магазина, которые согласились на рассылку, — в первую очередь тех, кто покупал за последние полгода.</dd>
+        <dt>Через месяц смотрим</dt><dd>сколько перешли по ссылке из писем (цель — от 4%), сколько купили с лендинга (от 8%), сколько вышло постов с хэштегом.</dd>
       </dl>
-      <div class="shop risk"><b>Магазин:</b> риск — письмо школы займёт слот промо магазина. Поэтому максимум 2 письма и не в недели распродаж. Зато «форма YouPumpy» подталкивает докупить комплект, а посты — бесплатный контент.</div>
+      <div class="shop risk"><b>Магазин:</b> риск в том, что письмо школы займёт место промо-рассылки магазина. Поэтому не больше двух писем и не в недели распродаж. Зато челлендж в одежде YouPumpy подталкивает докупить комплект, а посты участниц — бесплатный контент для магазина.</div>
     </div>
   </div>
 
@@ -343,17 +364,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   </div>
   <p class="small muted" style="margin-top:12px">1: 3 000 × 6% × 3 950 ₽. 2: 3 000 × 15% × 12% × 9 900 ₽ × 0,6 (посылки идут 3–7 дней, часть покупок уйдёт на второй месяц). 3: 60 000 × 30% открытий × 4% кликов × 8% × 5 900 ₽.</p>
 
-  <h3>Почему первым — способ 1</h3>
+  <h3>С чего бы начал я — со способа 1</h3>
   <div class="why">
-    <div class="card"><h4>Быстрее всех</h4><p>Один блок на странице «Спасибо», одно письмо, промокод. Ни съёмок, ни печати — запуск за 1–2 недели.</p></div>
-    <div class="card"><h4>Лучший момент</h4><p>Человек только что заплатил 9–16 тыс. за леггинсы «для попы». Программа «для попы» за 3 950 ₽ — продолжение покупки, а не реклама.</p></div>
-    <div class="card"><h4>Всё считается точно</h4><p>Заказ → показ → покупка. Через месяц честная цифра без споров об атрибуции, а магазин ничем не рискует.</p></div>
+    <div class="card"><h4>Запускается быстрее всех</h4><p>Один блок на странице «Спасибо», одно письмо и промокод. Ничего не нужно снимать и печатать — хватит одной-двух недель.</p></div>
+    <div class="card"><h4>Момент лучше не придумать</h4><p>Человек только что отдал 9–16 тыс. за леггинсы, которые подчёркивают ягодицы. Программа для ягодиц за 3 950 ₽ воспринимается как продолжение покупки, а не как реклама.</p></div>
+    <div class="card"><h4>Результат легко посчитать</h4><p>Заказ → показ → покупка. Через месяц будет точная цифра, спорить не о чем. А магазин ничем не рискует.</p></div>
   </div>
 
   <div class="calc" id="calc2">
     <div>
       <h4>Способ 1 на ваших цифрах</h4>
-      <p class="small muted">Сверху — допродажа «Упругой попы 2.0» за 7 900 ₽ во втором месяце.</p>
+      <p class="small muted">Тем, кто пройдёт марафон, можно предложить «Упругую попу 2.0» за 7 900 ₽, но это уже деньги второго месяца.</p>
       <div class="ctl"><label><span>Заказов в месяц</span><span id="v_n"></span></label><input id="n" type="range" min="500" max="10000" step="100" value="3000"></div>
       <div class="ctl"><label><span>Купили марафон</span><span id="v_t"></span></label><input id="t" type="range" min="1" max="12" step="0.5" value="6"></div>
       <div class="ctl"><label><span>Цена предложения, ₽</span><span id="v_q"></span></label><input id="q" type="range" min="1990" max="7900" step="10" value="3950"></div>
@@ -364,17 +385,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
       <div class="row"><span>Магазину</span><span class="v" style="color:var(--ok)">без потерь</span></div>
     </div>
   </div>
-  <p class="small muted" style="margin-top:12px">Способы 2 и 3 запускаю следом: QR требует печати и логистики, челлендж — контента и сверки с промо-календарём магазина.</p>
+  <p class="small muted" style="margin-top:12px">Способы 2 и 3 я бы запустил следом: для QR-карточек нужны печать и договорённость со складом, для челленджа — контент и согласование с календарём акций магазина.</p>
 </div></section>
 
 <section id="q"><div class="wrap">
   <div class="kicker">Дальше</div>
   <h2>Что я бы спросил на первой встрече</h2>
   <div class="qs">
-    <div class="card"><h4>Какие реальные конверсии</h4><p>Сколько базы открывает письма и как конвертировались прошлые запуски — чтобы заменить мои допущения фактами.</p></div>
-    <div class="card"><h4>Кого база уже знает</h4><p>Есть ли в команде тренеры, которых ученицы видели и любят.</p></div>
+    <div class="card"><h4>Какие реальные конверсии</h4><p>Какая часть базы на самом деле открывает письма и как конвертировались прошлые запуски. Хочу заменить свои допущения фактами.</p></div>
+    <div class="card"><h4>Кого база уже знает</h4><p>Есть ли в команде тренеры, которых ученицы уже знают.</p></div>
     <div class="card"><h4>Цифры магазина</h4><p>Сколько заказов в месяц у YouPumpy и одно ли юрлицо у магазина и школы.</p></div>
-    <div class="card"><h4>Что не получилось</h4><p>Какие запуски провалились и почему. Из этого обычно понятно больше, чем из успешных.</p></div>
+    <div class="card"><h4>Что не получилось</h4><p>Какие запуски не получились и почему. Обычно из неудач понятно больше, чем из успехов.</p></div>
   </div>
 </div></section>
 
@@ -402,6 +423,12 @@ function c2(){
 ['a','r','c','o','p'].forEach(i=>$(i).addEventListener('input',c1));
 ['n','t','q'].forEach(i=>$(i).addEventListener('input',c2));
 c1();c2();
+
+// reveal, counters, progress
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('section h2, section h3, .card, .stat, .way, .stop, .timeline, .tbl, .calc, .product, .note, ol.steps li, .bars').forEach(el=>{el.classList.add('reveal');io.observe(el)});
+const prog=document.getElementById('prog');addEventListener('scroll',()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.stat .n').forEach(n=>{const txt=n.textContent;const m=txt.match(/([\d,]+)/);if(!m)return;const target=parseFloat(m[1].replace(',','.'));const dec=m[1].includes(',')?1:0;const t0=performance.now();n.textContent=txt.replace(m[1],'0');function f(t){const p=Math.min((t-t0)/1300,1),e=1-Math.pow(1-p,3);n.textContent=txt.replace(m[1],(target*e).toFixed(dec).replace('.',','));if(p<1)requestAnimationFrame(f)}setTimeout(()=>requestAnimationFrame(f),300)})}
 </script>
 </body>
 </html>
