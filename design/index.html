@@ -117,6 +117,21 @@ footer small{display:block;margin-top:40px;color:var(--faint);font-size:13px}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.card,.cover img{transition:none}}
 </style>
+<style>
+/* ==== mobile fixes (design) ==== */
+.fx-marquee{overflow:hidden;max-width:100%}
+@media (max-width:700px){
+ .fx-ghost{display:none}
+ nav{background:rgba(20,16,22,.9)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+ .studies{columns:2 140px;column-gap:10px}
+ .st{margin-bottom:10px;border-radius:10px}
+ .st span{font-size:11px;left:6px;bottom:6px;padding:4px 7px}
+ .card .meta p{font-size:15px}
+ .fx-lbn{width:44px;height:44px;top:auto;bottom:16px;transform:none}
+ .fx-lbc{bottom:24px;font-size:11px;max-width:calc(100vw - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #contact h2{font-size:clamp(24px,7vw,32px)}
+}
+</style>
 </head>
 <body>
 <style>
@@ -322,7 +337,7 @@ const heroWrap=hero&&hero.querySelector('.wrap');
 if(heroWrap){const words=['Средовой дизайн','Выставочные стенды','Айдентика','Фасады и входные группы','Инсталляции','Сайты','Макетирование','Скетчинг','Нейросети'];const m=document.createElement('div');m.className='fx-marquee';m.setAttribute('aria-hidden','true');const line=words.map(w=>w+'<b>✦</b>').join('');m.innerHTML='<div>'+line+line+'</div>';hero.after(m)}
 // scramble h2
 if(!RM){const ch='!<>-_/[]{}—=+*^?#01';const scr=el=>{const f=el.textContent;let t0=null;const step=t=>{t0??=t;const p=Math.min((t-t0)/800,1);el.textContent=[...f].map((c,i)=>i/f.length<p||c===' '?c:ch[Math.random()*ch.length|0]).join('');if(p<1)requestAnimationFrame(step);else el.textContent=f};requestAnimationFrame(step)};
- const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){scr(e.target);io.unobserve(e.target)}}),{threshold:.6});document.querySelectorAll('main h2, section h2, h2').forEach(h=>{if(h.children.length===0){h.classList.add('fx-scr');io.observe(h)}})}
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){scr(e.target);io.unobserve(e.target)}}),{threshold:.6});document.querySelectorAll('main h2, section h2, h2').forEach(h=>{if(h.children.length===0&&h.textContent.trim().length<32&&innerWidth>700){h.classList.add('fx-scr');io.observe(h)}})}
 // cards tilt + spotlight + cursor
 const cur=document.getElementById('fxCur');let cx=0,cy=0;
 document.querySelectorAll('.card').forEach(card=>{if(getComputedStyle(card).position==='static')card.style.position='relative';const sp=document.createElement('span');sp.className='fx-spot';card.appendChild(sp);
@@ -365,7 +380,7 @@ html.vhs .fx-vhs-btn i{background:#ff2e2e;box-shadow:0 0 10px #ff2e2e;animation:
 @keyframes fxrec{50%{opacity:.2}}
 .fx-vhs-btn kbd{font:inherit;opacity:.45;border:1px solid rgba(243,237,232,.25);border-radius:4px;padding:2px 4px}
 @media (max-width:760px){#fxVhs{display:none}.fx-vhs-btn kbd{display:none}}
-.fx-vhs-inline{position:static;display:inline-flex;margin-top:14px;backdrop-filter:none}
+.fx-vhs-inline{position:static;display:inline-flex;width:max-content;margin-top:14px;backdrop-filter:none}
 @media (min-width:761px){.fx-vhs-inline{display:none}}
 /* VHS mode */
 .fx-osd{position:fixed;inset:0;z-index:185;pointer-events:none;display:none;font:400 clamp(16px,1.8vw,24px)/1 'VT323','Courier New',monospace;color:#f3ede8;text-shadow:2px 0 #ff4d7d,-2px 0 #b69cff}
@@ -462,7 +477,7 @@ if(ghosts.length&&!RM){const up=()=>{ghosts.forEach(([h,g])=>{const r=h.getBound
 /* ---- scroll velocity → marquees ---- */
 if(!RM&&C.marquee){const els=[...d.querySelectorAll(C.marquee)];let last=scrollY,v=0,sv=0;
  (function f(){const y=scrollY;v=y-last;last=y;sv+=(v-sv)*.12;const k=Math.max(-40,Math.min(40,sv));
-  els.forEach(el=>{el.getAnimations({subtree:true}).forEach(a=>{a.playbackRate=(1+Math.abs(k)*.12)*(k<-0.5?-1:1)});el.style.transform=`skewX(${-k*.25}deg)`});requestAnimationFrame(f)})()}
+  els.forEach(el=>{el.getAnimations({subtree:true}).forEach(a=>{a.playbackRate=(1+Math.abs(k)*.12)*(k<-0.5?-1:1)});if(FINE)el.style.transform=`skewX(${-k*.25}deg)`});requestAnimationFrame(f)})()}
 
 /* ---- number scramble on hover ---- */
 if(!RM&&C.nums)d.querySelectorAll(C.nums).forEach(el=>{let busy=0;el.addEventListener('pointerenter',()=>{if(busy)return;busy=1;
