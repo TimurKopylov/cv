@@ -179,6 +179,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 .hero h1 em{background:linear-gradient(90deg,var(--accent),#ff7a45);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media (prefers-reduced-motion:reduce){.grain,.hero:before,.hero:after{animation:none}.reveal{opacity:1;transform:none;transition:none}.bar .fill{transform:none;transition:none}}
 </style>
+<style>
+/* ==== mobile fixes (fit) ==== */
+.fx-toast{visibility:hidden}.fx-toast.on{visibility:visible}
+@media (max-width:640px){
+ nav .wrap{gap:16px}
+ nav a{font-size:14px}
+ .fx-pdf{display:none}
+ .scroll{overflow:visible}
+ .tbl.wide{min-width:0;display:block;border-radius:16px}
+ .tbl.wide tbody{display:block}
+ .tbl.wide tr{display:grid;grid-template-columns:1fr auto;column-gap:12px;border-bottom:1px solid var(--line);padding:12px 16px}
+ .tbl.wide tr:last-child{border-bottom:0}
+ .tbl.wide tr:first-child{display:none}
+ .tbl.wide td{border:0;padding:0}
+ .tbl.wide td:nth-child(1){grid-column:1;grid-row:1;font-weight:600}
+ .tbl.wide td.num{grid-column:2;grid-row:1;font-weight:700;color:var(--accent)}
+ .tbl.wide td:nth-child(2){grid-column:1/-1;grid-row:2;color:var(--muted);font-size:14px;margin-top:4px}
+ .tbl.wide td:nth-child(2):empty{display:none}
+ .tbl.wide tr.total{background:#fbf7f2}
+ .hero .author{flex-wrap:wrap;row-gap:8px}
+ .fx-rt{margin-left:0}
+ .fx-top{width:44px;height:44px;right:14px;bottom:14px}
+ .fx-top svg{width:44px;height:44px}
+}
+</style>
 </head>
 <body>
 <div class="progress" id="prog"></div><div class="grain" aria-hidden="true"></div>
