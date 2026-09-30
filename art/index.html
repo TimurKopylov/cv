@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Уроки рисования · Тимур Копылов</title>
+<meta name="description" content="Рисование как внимание: уроки для взрослых и детей, онлайн и в Москве.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4efe6;--paper2:#ebe4d7;--ink:#1f1c19;--muted:#6f675e;--line:#d8cfc0;--acc:#b0532f;--acc2:#8a3f22}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 "Golos Text",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.35;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .25 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+nav{position:sticky;top:0;z-index:20;background:rgba(244,239,230,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px;height:60px}
+nav .logo{font:600 22px/1 "Cormorant Garamond",serif;text-decoration:none;margin-right:auto}
+nav a.l{font-size:15px;color:var(--muted);text-decoration:none}
+nav a.l:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);text-decoration:none;font:500 15px/1 "Golos Text";padding:14px 20px;border-radius:99px;transition:background .25s,transform .25s}
+.btn:hover{background:var(--acc);transform:translateY(-2px)}
+.btn.sm{padding:10px 16px;font-size:14px}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+/* hero */
+.hero{padding:clamp(48px,9vh,110px) 0 60px;position:relative}
+.hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,70px);align-items:center}
+.kick{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+h1{font:500 clamp(46px,7.4vw,104px)/.95 "Cormorant Garamond",serif;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--acc)}
+.u{position:relative;display:inline-block}
+.u svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.32em;overflow:visible}
+.u path{fill:none;stroke:var(--acc);stroke-width:3;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.6s .5s cubic-bezier(.6,.1,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.lead{font-size:clamp(18px,1.6vw,21px);max-width:560px;margin:28px 0 34px;color:#3a3530}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hero .note{font-size:14px;color:var(--muted);margin-top:18px}
+.stack{position:relative;height:clamp(360px,44vw,520px)}
+.stack figure{position:absolute;background:#fff;padding:10px 10px 30px;box-shadow:0 18px 40px -22px rgba(40,30,20,.45);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.stack img{display:block;width:100%;height:100%;object-fit:cover}
+.stack figure:nth-child(1){width:58%;height:66%;left:4%;top:6%;transform:rotate(-5deg)}
+.stack figure:nth-child(2){width:52%;height:58%;right:0;top:0;transform:rotate(4deg)}
+.stack figure:nth-child(3){width:56%;height:52%;left:22%;bottom:0;transform:rotate(-1deg)}
+.stack:hover figure:nth-child(1){transform:rotate(-8deg) translate(-12px,-6px)}
+.stack:hover figure:nth-child(2){transform:rotate(7deg) translate(12px,-8px)}
+.stack:hover figure:nth-child(3){transform:rotate(1deg) translateY(10px)}
+/* sections */
+section{scroll-margin-top:60px;padding:clamp(56px,9vw,110px) 0;border-top:1px solid var(--line)}
+h2{font:500 clamp(36px,5vw,64px)/1 "Cormorant Garamond",serif;letter-spacing:-.01em;margin-bottom:18px}
+h2 em{font-style:italic;color:var(--acc)}
+.sub{color:var(--muted);max-width:620px;margin-bottom:44px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,36px)}
+.pt .n{font:500 44px/1 "Cormorant Garamond",serif;color:var(--acc);display:block;margin-bottom:10px}
+.pt h3{font:600 19px/1.3 "Golos Text";margin-bottom:8px}
+.pt p{color:#4a443e;font-size:16px}
+/* gallery */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filters button{font:500 14px/1 "Golos Text";color:var(--ink);background:transparent;border:1px solid var(--line);padding:10px 15px;border-radius:99px;cursor:pointer;transition:.2s}
+.filters button span{color:var(--muted);margin-left:6px;font-size:12px}
+.filters button:hover{border-color:var(--ink)}
+.filters button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filters button.on span{color:#b9b0a4}
+.masonry{columns:4 260px;column-gap:14px}
+.tile{break-inside:avoid;margin:0 0 14px;cursor:zoom-in;position:relative;background:var(--paper2);overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.tile.in{opacity:1;transform:none}
+.tile img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .4s}
+.tile:hover img{transform:scale(1.03)}
+.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(20,16,12,.6));opacity:0;transition:opacity .3s}
+.tile:hover figcaption{opacity:1}
+.tile.hide{display:none}
+.more{text-align:center;margin-top:24px}
+/* lesson */
+.lesson{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);align-items:start}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding:16px 0 16px 56px;border-bottom:1px solid var(--line);position:relative}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:14px;font:500 28px/1 "Cormorant Garamond",serif;color:var(--acc)}
+.steps b{display:block;font-weight:600}
+.steps span{color:#4a443e;font-size:15.5px}
+.card{background:#fff;padding:28px;box-shadow:0 18px 40px -26px rgba(40,30,20,.35)}
+.card h3{font:500 32px/1.1 "Cormorant Garamond",serif;margin-bottom:10px}
+.card p{color:#4a443e;font-size:16px;margin-bottom:10px}
+.kids{margin-top:22px;border-left:3px solid var(--acc);padding:4px 0 4px 18px}
+/* prices */
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.price{border:1px solid var(--line);padding:24px 20px;background:rgba(255,255,255,.35);display:flex;flex-direction:column;gap:8px;transition:border-color .25s,transform .25s}
+.price:hover{border-color:var(--ink);transform:translateY(-3px)}
+.price.hl{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.price .t{font-size:14px;color:var(--muted)}
+.price.hl .t{color:#b9b0a4}
+.price .v{font:500 42px/1 "Cormorant Garamond",serif}
+.price .d{font-size:14.5px;opacity:.85}
+.pnote{margin-top:18px;color:var(--muted);font-size:15px}
+/* about */
+.about{display:grid;grid-template-columns:260px 1fr;gap:clamp(24px,5vw,60px);align-items:center}
+.about img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.15);box-shadow:0 18px 40px -26px rgba(40,30,20,.5)}
+.about p{margin-bottom:12px;color:#3a3530}
+.outro{text-align:center}
+.outro h2{margin-bottom:26px}
+footer{padding:28px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(24,20,17,.94);display:none;align-items:center;justify-content:center}
+.lb.on{display:flex}
+.lb img{max-width:92vw;max-height:84vh;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:lbi .35s ease}
+@keyframes lbi{from{opacity:0;transform:scale(.97)}}
+.lb .cap{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#d9d1c5;font-size:14px}
+.lb button{position:absolute;background:none;border:0;color:#f4efe6;font:300 44px/1 "Golos Text";cursor:pointer;padding:16px;opacity:.75}
+.lb button:hover{opacity:1}
+.lb .x{top:10px;right:14px;font-size:36px}
+.lb .p{left:6px;top:50%;transform:translateY(-50%)}
+.lb .nx{right:6px;top:50%;transform:translateY(-50%)}
+.float{position:fixed;right:18px;bottom:18px;z-index:30;opacity:0;transform:translateY(12px);pointer-events:none;transition:.3s}
+.float.on{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:900px){
+ .hero .grid,.lesson,.about{grid-template-columns:1fr}
+ .stack{height:340px;max-width:460px}
+ .cols3{grid-template-columns:1fr}
+ .prices{grid-template-columns:1fr 1fr}
+ .about img{max-width:220px}
+ nav a.l{display:none}
+}
+@media (max-width:520px){
+ .prices{grid-template-columns:1fr}
+ .masonry{columns:2 140px;column-gap:8px}
+ .tile{margin-bottom:8px}
+ .lb button.p,.lb button.nx{display:none}
+}
+@media (prefers-reduced-motion:reduce){.u path{animation:none;stroke-dashoffset:0}.tile{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="logo" href="#top">Тимур Копылов</a><a class="l" href="#works">Работы</a><a class="l" href="#lesson">Занятия</a><a class="l" href="#price">Цены</a><a class="btn sm" href="https://t.me/timurkopylov" target="_blank" rel="noopener">Записаться</a></div></nav>
+
+<header class="hero" id="top"><div class="wrap grid">
+ <div>
+  <div class="kick">Уроки рисования · онлайн и в Москве</div>
+  <h1>Рисование — это <span class="u"><em>внимание</em><svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M3 14 C 60 4, 120 18, 180 9 S 270 6, 297 12"/></svg></span>, а не талант</h1>
+  <p class="lead">Учу взрослых и детей смотреть на вещи дольше секунды и честно переносить увиденное на бумагу — линером и карандашом. Без «я не умею».</p>
+  <div class="cta"><a class="btn" href="https://t.me/timurkopylov" target="_blank" rel="noopener">Записаться в Telegram →</a><a class="btn ghost" href="#works">Посмотреть работы</a></div>
+  <p class="note">Средовой дизайнер, Строгановка · занятия 1:1 по 60 минут</p>
+ </div>
+ <div class="stack" aria-hidden="true">
+  <figure><img src="img/sk05.webp" alt=""></figure>
+  <figure><img src="img/dr26.webp" alt=""></figure>
+  <figure><img src="img/sk20.webp" alt=""></figure>
+ </div>
+</div></header>
+
+<section><div class="wrap">
+ <h2>Подход</h2>
+ <p class="sub">Близок к идее «простого рисования»: графика, наблюдение и честная линия вместо попытки сделать «красиво».</p>
+ <div class="cols3">
+  <div class="pt"><span class="n">01</span><h3>Смотреть, а не выдумывать</h3><p>Большинство «не умеет рисовать», потому что рисует то, что помнит, а не то, что видит. Это лечится упражнениями на внимание.</p></div>
+  <div class="pt"><span class="n">02</span><h3>Простые материалы</h3><p>Линер, карандаш, скетчбук. Никаких дорогих красок на старте — цвет подключаем, когда появляется уверенная линия.</p></div>
+  <div class="pt"><span class="n">03</span><h3>Результат, который видно</h3><p>За месяц — скетчбук из 20–30 рисунков: предметы, интерьеры, улица, люди. Сравниваем «до» и «после».</p></div>
+ </div>
+</div></section>
+
+<section id="works"><div class="wrap">
+ <h2>Работы</h2>
+ <p class="sub">Наброски, академический рисунок, живопись и композиция — от подготовки к Строгановке до скетчей на улице.</p>
+ <div class="filters" role="tablist"></div>
+ <div class="masonry" id="grid"></div>
+ <div class="more"><button class="btn ghost" id="more">Показать ещё</button></div>
+</div></section>
+
+<section id="lesson"><div class="wrap lesson">
+ <div>
+  <h2>Как проходят <em>занятия</em></h2>
+  <ol class="steps">
+   <li><b>Онлайн 1:1, 60 минут</b><span>Камера смотрит на ваш лист — я вижу каждую линию и показываю на своём.</span></li>
+   <li><b>Первое занятие</b><span>Смотрим, как вы видите, делаем первый рисунок, который удивит, и составляем план на месяц.</span></li>
+   <li><b>Домашка по 15 минут в день</b><span>Короткие упражнения и разбор в Telegram между уроками.</span></li>
+   <li><b>План на 4 недели</b><span>Предметы → интерьер → улица → люди. Можно выйти на натуру в Москве.</span></li>
+  </ol>
+ </div>
+ <div class="card">
+  <h3>Кому подойдёт</h3>
+  <p>Тем, кто никогда не рисовал или бросил в детстве. Тем, кто ищет спокойное хобби вместо экрана. Дизайнерам и продактам, которым нужен скетчинг. Тем, кто хочет рисовать в поездках, а не только фотографировать.</p>
+  <div class="kids"><p><b>Дети 7–14 лет.</b> Тот же подход и тот же формат, просто больше игры и цвета: маркеры, акварель, животные, дома. Ребёнок собирает папку работ, родитель раз в месяц получает короткий отчёт о прогрессе.</p></div>
+  <p style="margin-top:14px;font-size:15px;color:var(--muted)">Нужны только бумага, линер и карандаш — список пришлю до первого урока.</p>
+ </div>
+</div></section>
+
+<section id="price"><div class="wrap">
+ <h2>Цены</h2>
+ <p class="sub">Одинаковые для взрослых и детей.</p>
+ <div class="prices">
+  <div class="price"><div class="t">Одно занятие</div><div class="v">2 000 ₽</div><div class="d">60 минут онлайн + домашнее задание</div></div>
+  <div class="price hl"><div class="t">4 занятия · месяц</div><div class="v">7 200 ₽</div><div class="d">1 800 ₽ за урок + разбор домашки в Telegram</div></div>
+  <div class="price"><div class="t">8 занятий</div><div class="v">13 600 ₽</div><div class="d">1 700 ₽ за урок + итоговый скетчбук</div></div>
+  <div class="price"><div class="t">Скетчинг на улице</div><div class="v">3 500 ₽</div><div class="d">90 минут в Москве, на натуре</div></div>
+ </div>
+ <p class="pnote">Оплата перед занятием. Перенос бесплатно, если предупредить за 12 часов.</p>
+</div></section>
+
+<section><div class="wrap about">
+ <img src="../design/img/me.webp" alt="Тимур Копылов" loading="lazy">
+ <div>
+  <h2>Обо мне</h2>
+  <p>Тимур Копылов, средовой дизайнер по образованию (Строгановка): академический рисунок, живопись, композиция, макетирование. Работаю с выставками, пространствами и брендингом.</p>
+  <p>Несколько лет делал образовательные продукты, поэтому умею выстраивать обучение так, чтобы человек дошёл до результата, а не бросил на третьем уроке.</p>
+ </div>
+</div></section>
+
+<section class="outro"><div class="wrap">
+ <h2>Начнём с <em>кружки</em> на столе</h2>
+ <a class="btn" href="https://t.me/timurkopylov" target="_blank" rel="noopener">Написать в Telegram · @timurkopylov</a>
+</div></section>
+<footer>© Тимур Копылов · уроки рисования</footer>
+
+<a class="btn float" id="float" href="https://t.me/timurkopylov" target="_blank" rel="noopener">Записаться</a>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><button class="x" aria-label="Закрыть">×</button><button class="p" aria-label="Назад">‹</button><img alt=""><button class="nx" aria-label="Вперёд">›</button><div class="cap"></div></div>
+
+<script>
+const D=[["sk00",636,1080,"Наброски фигуры"],["sk01",745,1080,"Наброски фигуры"],["sk02",740,1080,"Наброски фигуры"],["sk03",809,1080,"Наброски фигуры"],["sk04",1500,1054,""],["sk05",1500,1114,""],["sk06",1500,1052,""],["sk07",1500,1027,""],["sk08",1500,1059,"Перспектива"],["sk09",1500,1045,""],["sk10",1500,975,""],["sk11",1500,1067,""],["sk12",1500,1064,""],["sk13",1500,1059,""],["sk14",1049,1500,""],["sk15",1054,1500,""],["sk16",1045,1500,""],["sk17",1500,1091,""],["sk18",1048,1500,""],["sk19",1031,1500,""],["sk20",1045,1500,""],["sk21",1051,1500,""],["sk22",1471,1023,""],["sk23",1500,942,""],["sk24",1500,1073,""],["sk25",1029,1500,""],["sk26",1500,1078,""],["sk27",1045,1500,""],["sk28",1064,1500,""],["sk29",1500,992,""],["sk30",1500,957,""],["sk31",1500,1137,""],["sk32",1064,1500,""],["sk33",1500,1075,"Стаффаж"],["sk34",747,1080,""],["sk35",755,1080,""],["sk36",1462,1500,"Бионика"],["sk37",1500,1035,""],["sk38",1500,1393,""],["sk39",1474,1500,""],["sk40",1500,1437,""],["sk41",1500,1447,""],["sk42",1280,1500,""],["dr00",1225,1500,""],["dr01",1130,1500,"Гатамелата"],["dr02",1041,1500,"Голова Экорше"],["dr03",1053,1500,"Капитель"],["dr04",1072,1500,"Кисти"],["dr05",1043,1500,"Сократ"],["dr06",1115,1500,"Стопы"],["dr07",1045,1500,"Фигура в контрпосте"],["dr08",844,1500,"Фигура в контрпосте"],["dr09",1187,1500,""],["dr10",757,1080,"Антиной"],["dr11",1051,1500,"Антиной. Сангина"],["dr12",746,1072,"Врезка"],["dr13",752,1075,"Голова с плечевым поясом Аполлона"],["dr14",754,1080,"Голова с плечевым поясом Леры"],["dr15",1085,1500,"Кисти"],["dr16",1051,1500,""],["dr17",972,1500,""],["dr18",764,1080,""],["dr19",1065,1500,"Эскизы к натюрморту"],["dr20",1075,1500,"Эскизы к натюрморту"],["dr21",1500,1054,""],["dr22",1500,1051,""],["dr23",1500,1033,""],["dr24",1125,1500,""],["dr25",1077,1500,""],["dr26",1125,1500,""],["dr27",1125,1500,""],["dr28",1125,1500,""],["dr29",1125,1500,""],["dr30",1101,1500,""],["dr31",1091,1500,""],["dr32",1121,1500,"Гермес с младенцем Дионисом"],["dr33",1022,1500,"Драпировка"],["dr34",1125,1500,"Контрпост в одежде"],["dr35",1125,1500,"Контрпост"],["dr36",1146,1500,""],["dr37",750,1080,"Диплом: «Пространство памяти»"],["pa00",1081,1500,""],["pa01",785,1080,"Натюрморт в тёплой цветовой гамме"],["pa02",1500,1081,""],["pa03",1500,1084,"Декоративный натюрморт"],["pa04",957,1277,"Натюрморт контражур"],["pa05",1500,1125,""],["pa06",1500,1095,""],["pa07",1090,1500,""],["pa08",1500,1125,""],["pa09",1080,1500,""],["pa10",1500,1071,""],["pa11",1500,1076,""],["pa12",1125,1500,""],["pa13",1500,1500,""],["pa14",1500,1500,""],["pa15",1125,1500,""],["pa16",1064,1500,""],["pa17",1125,1500,""],["pa18",1096,1500,""],["pa19",1111,1500,""],["pa20",1500,1028,""],["pa21",1033,1500,""],["pa22",1500,1047,""],["pa23",844,1500,""],["pa24",1030,1500,""],["pa25",844,1500,""],["pa26",1341,1500,""],["pa27",1393,1500,""],["pr00",786,1080,"Формальная композиция на свободную тему"],["pr01",1259,1500,"Объемная композиция на основе бумагопластики"],["pr02",1458,1500,"Объемная композиция на основе бумагопластики"],["pr03",729,1500,"Объемная композиция на основе бумагопластики"],["pr04",1219,1500,"Объемная композиция на основе бумагопластики"],["pr05",1075,1500,"Предмет в среде"],["pr06",1052,1500,"Предмет в среде"],["pr07",1061,1500,""],["pr08",1051,1500,""],["pr09",1155,1500,"Входная группа"],["pr10",703,1080,""],["pr11",1050,1500,"Современные Афины"],["pr12",1052,1500,"Фестивальная зона"],["pr13",1006,1500,"Контраст родственных цветов"],["pr14",995,1500,"Контраст-нюанс насыщенность"],["pr15",973,1500,"Контраст-нюанс"],["pr16",983,1500,"Симультанный контраст"],["pr17",1092,1500,""],["pr18",1125,1500,""],["pr19",1203,1500,""],["pr20",1106,1500,""],["pr21",1125,1500,""],["pr22",1125,1500,""]];
+const CAT={all:'Все',sk:'Наброски и скетчинг',dr:'Академический рисунок',pa:'Живопись',pr:'Композиция'};
+const grid=document.getElementById('grid'),F=document.querySelector('.filters'),moreB=document.getElementById('more');
+let cur='all',shown=24,vis=[];
+Object.keys(CAT).forEach(k=>{const b=document.createElement('button');const n=k=='all'?D.length:D.filter(d=>d[0].slice(0,2)==k).length;b.innerHTML=CAT[k]+'<span>'+n+'</span>';b.dataset.k=k;b.onclick=()=>{cur=k;shown=24;render()};F.appendChild(b)});
+// interleave categories for "all"
+const order=(()=>{const g={};D.forEach(d=>(g[d[0].slice(0,2)]=g[d[0].slice(0,2)]||[]).push(d));const out=[];let i=0;while(out.length<D.length){['sk','dr','pa','pr'].forEach(k=>{if(g[k][i])out.push(g[k][i])});i++}return out})();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -5% 0px'});
+function render(){
+ F.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==cur));
+ const list=cur=='all'?order:D.filter(d=>d[0].slice(0,2)==cur);vis=list.slice(0,shown);
+ grid.innerHTML='';
+ vis.forEach((d,i)=>{const f=document.createElement('figure');f.className='tile';f.innerHTML=`<img src="img/${d[0]}t.webp" width="${d[1]}" height="${d[2]}" loading="lazy" alt="${d[3]||CAT[d[0].slice(0,2)]}">`+(d[3]?`<figcaption>${d[3]}</figcaption>`:'');f.onclick=()=>open(i);grid.appendChild(f);io.observe(f)});
+ moreB.parentElement.style.display=list.length>shown?'':'none';
+}
+moreB.onclick=()=>{shown+=24;render()};
+render();
+const lb=document.getElementById('lb'),li=lb.querySelector('img'),lc=lb.querySelector('.cap');let at=0;
+function open(i){at=i;show();lb.classList.add('on');document.body.style.overflow='hidden'}
+function show(){const d=vis[at];li.src='img/'+d[0]+'.webp';li.style.animation='none';void li.offsetWidth;li.style.animation='';lc.textContent=(d[3]?d[3]+' · ':'')+CAT[d[0].slice(0,2)]+'  —  '+(at+1)+' / '+vis.length}
+function close(){lb.classList.remove('on');document.body.style.overflow=''}
+function step(s){at=(at+s+vis.length)%vis.length;show()}
+lb.querySelector('.x').onclick=close;lb.querySelector('.p').onclick=e=>{e.stopPropagation();step(-1)};lb.querySelector('.nx').onclick=e=>{e.stopPropagation();step(1)};
+lb.onclick=e=>{if(e.target===lb)close()};
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key=='Escape')close();if(e.key=='ArrowLeft')step(-1);if(e.key=='ArrowRight')step(1)});
+let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1)});
+const fl=document.getElementById('float');addEventListener('scroll',()=>fl.classList.toggle('on',scrollY>innerHeight*.9&&scrollY<document.body.scrollHeight-innerHeight*1.6),{passive:true});
+</script>
+</body>
+</html>
